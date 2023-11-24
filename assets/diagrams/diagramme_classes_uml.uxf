@@ -1,0 +1,70 @@
+<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>384</x><y>176</y><w>120</w><h>88</h></coordinates><panel_attributes>Pharmacien
+--
+- id: int
+- nom: string
+- prenom: string
+- nomUtilisateur : string
+- motDePasse: string
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>424</x><y>344</y><w>80</w><h>88</h></coordinates><panel_attributes>Ordonnance
+--
+- id: int
+- medecin: int
+- patient: int
+- maladie : int
+- date: string
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>784</x><y>320</y><w>104</w><h>88</h></coordinates><panel_attributes>Médecin
+--
+- id: int
+- nom: string
+- prenom: string
+- telephone : string
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>776</x><y>440</y><w>88</w><h>96</h></coordinates><panel_attributes>Posologie
+--
+- id_medicament_ordonnance: int
+- ordonnance: int
+- medicament: int
+- duree : int
+- quantite: int
+- duree : int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>416</x><y>544</y><w>72</w><h>64</h></coordinates><panel_attributes>Maladie
+--
+- id: int
+- nom: string
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1048</x><y>432</y><w>96</w><h>88</h></coordinates><panel_attributes>Médicament
+--
+- id: int
+- nom: string
+- fabriquant: string
+- stock : int
+- prix: float
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>192</x><y>336</y><w>104</w><h>112</h></coordinates><panel_attributes>Patient
+--
+- id: int
+- nom: string
+- prenom: string
+- naissance: string
+- telephone : string
+- mutuelle: int
+- securite : int
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>360</y><w>72</w><h>64</h></coordinates><panel_attributes>Mutuelle
+--
+- id: int
+- nom: string
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>64</x><y>376</y><w>144</w><h>40</h></coordinates><panel_attributes>
+m1=0..1
+m2=1..*
+</panel_attributes><additional_attributes>10;20;160;20</additional_attributes></element><element><id>Relation</id><coordinates><x>448</x><y>424</y><w>40</w><h>136</h></coordinates><panel_attributes>
+m1=1
+m2=0..*
+</panel_attributes><additional_attributes>10;150;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>856</x><y>472</y><w>208</w><h>32</h></coordinates><panel_attributes>lt=-
+m1=1..*
+m2=1..*</panel_attributes><additional_attributes>240;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>496</x><y>400</y><w>296</w><h>104</h></coordinates><panel_attributes>lt=-
+m1=1..*
+m2=1
+</panel_attributes><additional_attributes>350;110;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>288</x><y>384</y><w>152</w><h>32</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=0..*</panel_attributes><additional_attributes>10;10;170;10</additional_attributes></element><element><id>Relation</id><coordinates><x>496</x><y>336</y><w>304</w><h>48</h></coordinates><panel_attributes>
+m1=1
+m2=0..*
+</panel_attributes><additional_attributes>360;20;10;30</additional_attributes></element></diagram>
