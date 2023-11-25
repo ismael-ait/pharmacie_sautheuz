@@ -1,0 +1,29 @@
+{
+  "name": "pharmacie_sautheuz",
+  "version": "1.0.0",
+  "description": "Site intranet pour pharmaciens afin de gérer les stocks de médicaments, et les divers éléments liés à leurs clients (ordonnances, pathologies, mutuelle etc.)",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ismael-ait/pharmacie_sautheuz.git"
+  },
+  "author": "Ismael",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ismael-ait/pharmacie_sautheuz/issues"
+  },
+  "homepage": "https://github.com/ismael-ait/pharmacie_sautheuz#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "mysql2": "^3.6.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
