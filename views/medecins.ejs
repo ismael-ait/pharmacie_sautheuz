@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Liste des Médecins</title>
+  <link rel="stylesheet" href="/css/style_liste.css">
+</head>
+<body>
+  <h1>Liste des Médecins</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Numéro de Téléphone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% medecins.forEach(medecin => { %>
+        <tr>
+          <td><%= medecin.Medecin_Id %></td>
+          <td><%= medecin.Medecin_Nom %></td>
+          <td><%= medecin.Medecin_Prenom %></td>
+          <td><%= medecin.Medecin_NumeroTelephone %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</body>
+</html>

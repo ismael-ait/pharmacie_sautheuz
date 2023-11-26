@@ -1,0 +1,41 @@
+<!-- patients.ejs -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Liste des Patients</title>
+  <link rel="stylesheet" href="/css/style_liste.css">
+</head>
+<body>
+  <h1>Liste des Patients</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Date de Naissance</th>
+        <th>Numéro de securité sociale</th>
+        <th>Numéro de téléphone</th>
+        <th>Id mutuelle</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <% patients.forEach(patient => { %>
+        <tr>
+          <td><%= patient.Patient_Id %></td>
+          <td><%= patient.Patient_Nom %></td>
+          <td><%= patient.Patient_Prenom %></td>
+          <td><%= patient.Patient_DateNaissance %></td>
+          <td><%= patient.Patient_NumeroSecurite %></td>
+          <td><%= patient.Patient_NumeroTelephone %></td>
+          <td><%= patient.Patient_IdMutuelle %></td>
+
+
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</body>
+</html>

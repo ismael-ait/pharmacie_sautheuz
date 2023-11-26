@@ -1,92 +1,27 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const mysql = require('mysql2')
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+const port = process.env.PORT || 5000;
 
-const app = express()
-const port = process.env.PORT || 5000
+// Import des routes
+const patientRoutes = require('./routes/patientRoutes');
+const accueilRoutes = require('./routes/accueilRoutes'); // Import de la route pour la page d'accueil
+const medecinRoutes = require('./routes/medecinRoutes'); // Import de la route pour les médecins
 
-app.use(bodyParser.urlencoded({extended: false}))
-app.use(bodyParser.json())
+app.set('view engine', 'ejs');
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use('/css', express.static(__dirname + '/public/css'));
 
-// Connexion mysql
-const pool = mysql.createPool({
-    connectionLimit : 10,
-    host :              'localhost',
-    user :              'root',
-    password :          'password8',
-    database :          'Pharmacie'
+// Routes pour les patients
+app.use('/patients', patientRoutes);
+app.use('/medecins', medecinRoutes);
 
-})
-
-
-// Test pour afficher tous les champs d'une table
-app.get('', (req, res) => {
-    pool.getConnection((err, connection) => {
-        if(err) throw err
-        console.log(`connected as id ${connection.threadId}`)
-
-        connection.query('SELECT * FROM Medecin', (err, rows) => {
-            connection.release() 
-            if (!err) {
-                res.send(rows)
-            } else {
-                console.log(err)
-            }
-        })
-    })
-
-
-})
-
-
-// Test pour afficher tous les champs par id
-app.get('/:id', (req, res) => {
-    pool.getConnection((err, connection) => {
-        if(err) throw err
-        console.log(`connected as id ${connection.threadId}`)
-        
-        connection.query('SELECT * FROM Medecin WHERE Medecin_Id = ?', [req.params.id], (err, rows) => {
-            connection.release() 
-            if (!err) {
-                res.send(rows)
-            } else {
-                console.log(err)
-            }
-        })
-    })
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Utilisation de la route pour la page d'accueil
+app.use('/', accueilRoutes); // Utilisation de la route pour la page d'accueil
 
 
 
 // Écoute sur le port 5000
-app.listen(port, () => console.log(`Écoute sur le port ${port}`))
+app.listen(port, () => console.log(`Écoute sur le port ${port}`));
