@@ -9,8 +9,28 @@ const medecinController = {
         res.render('medecins', { medecins: results });
       }
     });
+  },
+
+  addMedecinForm: (req, res) => {
+    res.render('ajouterMedecin'); // Créez une vue pour ajouter un médecin
+  },
+
+  addMedecin: (req, res) => {
+    const { nom, prenom, numeroTelephone } = req.body;
+    const newMedecin = {
+      Medecin_Nom: nom,
+      Medecin_Prenom: prenom,
+      Medecin_NumeroTelephone: numeroTelephone
+    };
+
+    Medecin.addMedecin(newMedecin, (error, result) => {
+      if (error) {
+        res.status(500).send('Erreur lors de l\'ajout du médecin');
+      } else {
+        res.redirect('/medecins'); // Redirige après l'ajout
+      }
+    });
   }
-  // Autres méthodes du contrôleur Medecin si nécessaire...
 };
 
 module.exports = medecinController;

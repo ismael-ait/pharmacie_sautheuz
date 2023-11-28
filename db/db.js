@@ -4,8 +4,9 @@ const pool = mysql.createPool({
     connectionLimit: 10,
     host: 'localhost',
     user: 'root',
-    password: 'password8',
+    password: 'IonicVortex',
     database: 'Pharmacie'
 });
+
 
 module.exports = pool;
