@@ -30,7 +30,38 @@ const medecinController = {
         res.redirect('/medecins'); // Redirige après l'ajout
       }
     });
+  },
+  
+  getMedecinById: (req, res) => {
+    const medecinId = req.params.id;
+
+    Medecin.getMedecinById(medecinId, (error, medecin) => {
+      if (error) {
+        res.status(500).send('Erreur lors de la récupération du médecin');
+      } else {
+        res.render('modifierMedecin', { medecin: medecin });
+      }
+    });
+  },
+  updateMedecin: (req, res) => {
+    const medecinId = req.params.id;
+    const { nom, prenom, numeroTelephone } = req.body;
+    const updatedMedecin = {
+      Medecin_Nom: nom,
+      Medecin_Prenom: prenom,
+      Medecin_NumeroTelephone: numeroTelephone
+    };
+
+    Medecin.updateMedecin(medecinId, updatedMedecin, (error, result) => {
+      if (error) {
+        res.status(500).send('Erreur lors de la mise à jour du médecin');
+      } else {
+        res.redirect('/medecins'); // Redirige après la mise à jour
+      }
+    });
   }
 };
+  
+
 
 module.exports = medecinController;

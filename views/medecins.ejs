@@ -19,6 +19,8 @@
         <th>Nom</th>
         <th>Prénom</th>
         <th>Numéro de Téléphone</th>
+        <th>Actions</th>
+
       </tr>
     </thead>
     <tbody>
@@ -28,6 +30,12 @@
           <td><%= medecin.Medecin_Nom %></td>
           <td><%= medecin.Medecin_Prenom %></td>
           <td><%= medecin.Medecin_NumeroTelephone %></td>
+          <!-- Ajout du bouton "Modifier" pour chaque médecin -->
+          <td>
+            <form method="get" action="/medecins/modifier/<%= medecin.Medecin_Id %>">
+              <button type="submit">Modifier</button>
+            </form>
+          </td>
         </tr>
       <% }); %>
     </tbody>
