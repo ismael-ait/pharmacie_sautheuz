@@ -18,8 +18,13 @@ const Medecin = {
       } else {
         callback(null, results[0]); // Renvoie le premier résultat trouvé
       }
+      
     });
+  },
+  deleteMedecin: (medecinId, callback) => {
+    db.query('DELETE FROM Medecin WHERE Medecin_Id = ?', [medecinId], callback);
   }
+  
 };
 
 module.exports = Medecin;

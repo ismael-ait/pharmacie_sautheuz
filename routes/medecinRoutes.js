@@ -10,4 +10,6 @@ router.post('/ajouter', medecinController.addMedecin);
 router.get('/modifier/:id', medecinController.getMedecinById);
 router.post('/modifier/:id', medecinController.updateMedecin);
 
+router.post('/supprimer/:id', medecinController.deleteMedecin);
+
 module.exports = router;

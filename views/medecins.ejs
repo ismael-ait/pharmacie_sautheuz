@@ -32,8 +32,13 @@
           <td><%= medecin.Medecin_NumeroTelephone %></td>
           <!-- Ajout du bouton "Modifier" pour chaque médecin -->
           <td>
+            <!-- Formulaire pour le bouton "Modifier" -->
             <form method="get" action="/medecins/modifier/<%= medecin.Medecin_Id %>">
               <button type="submit">Modifier</button>
+            </form>
+            <!-- Formulaire pour le bouton "Supprimer" -->
+            <form method="post" action="/medecins/supprimer/<%= medecin.Medecin_Id %>">
+              <button type="submit">Supprimer</button>
             </form>
           </td>
         </tr>

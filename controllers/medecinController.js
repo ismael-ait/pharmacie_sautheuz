@@ -59,6 +59,18 @@ const medecinController = {
         res.redirect('/medecins'); // Redirige après la mise à jour
       }
     });
+  },
+
+  deleteMedecin: (req, res) => {
+    const medecinId = req.params.id;
+
+    Medecin.deleteMedecin(medecinId, (error, result) => {
+      if (error) {
+        res.status(500).send('Erreur lors de la suppression du médecin');
+      } else {
+        res.redirect('/medecins'); // Redirige après la suppression
+      }
+    });
   }
 };
   
