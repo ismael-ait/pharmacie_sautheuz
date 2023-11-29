@@ -37,4 +37,9 @@ table {
   button:hover {
     background-color: #2980b9;
   }
+  .button-group {
+    display: flex;
+    gap: 5px; /* Espacement entre les boutons */
+  }
+
   
