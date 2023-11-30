@@ -2,7 +2,7 @@
 
 ## Description du projet : 
 
-Site web intranet permettant aux pharmaciens de gérer les patients, leurs ordonnances et les médicaments en stock.
+Site web intranet permettant aux pharmaciens de gérer les patients, leurs ordonnances ainsi que les médicaments en stock.
 
 ## Technologies utilisées :
 
