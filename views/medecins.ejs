@@ -11,7 +11,6 @@
   
 
   <!-- Bouton pour aller vers le formulaire d'ajout -->
-  <a href="/medecins/ajouter">Ajouter un médecin</a>
   <a href="/">Accueil</a>
 
 
@@ -44,6 +43,8 @@
               <form method="post" action="/medecins/supprimer/<%= medecin.Medecin_Id %>">
                 <button type="submit">Supprimer</button>
               </form>
+              <a href="/medecins/ajouter">
+                <button type="button">Ajouter</button>
             </div>
             
           </td>
