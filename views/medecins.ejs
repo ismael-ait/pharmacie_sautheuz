@@ -11,8 +11,12 @@
   
 
   <!-- Bouton pour aller vers le formulaire d'ajout -->
-  <a href="/">Accueil</a>
 
+  <button type="button" onclick="window.location.href = '/'">Accueil</button>
+
+    <button type="button" onclick="window.location.href = '/medecins/ajouter'">Ajouter</button>
+    <br>
+    <br>
 
   <table>
     <thead>
@@ -43,8 +47,7 @@
               <form method="post" action="/medecins/supprimer/<%= medecin.Medecin_Id %>">
                 <button type="submit">Supprimer</button>
               </form>
-              <a href="/medecins/ajouter">
-                <button type="button">Ajouter</button>
+              
             </div>
             
           </td>

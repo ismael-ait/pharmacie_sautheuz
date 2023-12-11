@@ -7,6 +7,8 @@ const port = process.env.PORT || 5000;
 const patientRoutes = require('./routes/patientRoutes');
 const accueilRoutes = require('./routes/accueilRoutes'); 
 const medecinRoutes = require('./routes/medecinRoutes'); 
+const pharmacienRoutes = require('./routes/pharmacienRoutes');
+const medicamentRoutes = require('./routes/medicamentRoutes'); // Import du routeur des médicaments
 
 app.set('view engine', 'ejs');
 
@@ -16,6 +18,9 @@ app.use('/css', express.static(__dirname + '/public/css'));
 
 app.use('/patients', patientRoutes); // Route patients
 app.use('/medecins', medecinRoutes); // Route medecins
+app.use('/pharmaciens', pharmacienRoutes); // Route medecins
+app.use('/medicaments', medicamentRoutes); // Utilisation du routeur des médicaments
+
 app.use('/', accueilRoutes); // Route accueil
 
 

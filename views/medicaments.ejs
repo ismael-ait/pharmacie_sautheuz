@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Liste des Médicaments</title>
+  <link rel="stylesheet" href="/css/style_liste.css">
+</head>
+<body>
+  <div class="one">
+    <h1>Liste des Médicaments</h1>
+  </div>
+  
+  <!-- Bouton pour aller vers le formulaire d'ajout -->
+  <button type="button" onclick="window.location.href = '/'">Accueil</button>
+
+    <button type="button" onclick="window.location.href = '/medicaments/ajouter'">Ajouter</button>
+    <br>
+    <br>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Stock</th>
+        <th>Prix</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% medicaments.forEach(medicament => { %>
+        <tr>
+          <td><%= medicament.Medicament_Id %></td>
+          <td><%= medicament.Medicament_Nom %></td>
+          <td><%= medicament.Medicament_Stock %></td>
+          <td><%= medicament.Medicament_Prix %></td>
+          <td>
+            <div class="button-group"> 
+              <form method="get" action="/medicaments/modifier/<%= medicament.Medicament_Id %>">
+                <button type="submit">Modifier</button>
+              </form>
+              <form method="post" action="/medicaments/supprimer/<%= medicament.Medicament_Id %>">
+                <button type="submit">Supprimer</button>
+              </form>
+            
+            </div>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</body>
+</html>

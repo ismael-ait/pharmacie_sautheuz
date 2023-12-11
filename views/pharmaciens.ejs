@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Liste des Pharmaciens</title>
+  <link rel="stylesheet" href="/css/style_liste.css">
+</head>
+<body>
+  <div class="one">
+    <h1>Liste des Pharmaciens</h1>
+  </div>
+  
+
+  <button type="button" onclick="window.location.href = '/'">Accueil</button>
+
+  <button type="button" onclick="window.location.href = '/pharmaciens/ajouter'">Ajouter</button>
+  <br>
+  <br>
+
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Nom d'utilisateur</th>
+        <th>Mot de passe</th>
+        <th>Actions</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <% pharmaciens.forEach(pharmacien => { %>
+        <tr>
+          <td><%= pharmacien.Pharmacien_Id %></td>
+          <td><%= pharmacien.Pharmacien_Nom %></td>
+          <td><%= pharmacien.Pharmacien_Prenom %></td>
+          <td><%= pharmacien.Pharmacien_NomUtilisateur %></td>
+          <td><%= pharmacien.Pharmacien_MotDePasse %></td>
+
+          <!-- Ajout du bouton "Modifier" pour chaque pharmacien -->
+          <td>
+            <!-- Formulaire pour le bouton "Modifier" -->
+            <div class="button-group"> 
+              <form method="get" action="/pharmaciens/modifier/<%= pharmacien.Pharmacien_Id %>">
+                <button type="submit">Modifier</button>
+              </form>
+              <!-- Formulaire pour le bouton "Supprimer" -->
+              <form method="post" action="/pharmaciens/supprimer/<%= pharmacien.Pharmacien_Id %>">
+                <button type="submit">Supprimer</button>
+              </form>
+             
+            </div>
+            
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</body>
+</html>

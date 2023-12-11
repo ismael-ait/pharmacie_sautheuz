@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Modifier Médecin</title>
+  <link rel="stylesheet" href="/css/style_form.css">
+</head>
+<body>
+  <h1>Modifier Médecin</h1>
+
+  <form action="/pharmaciens/modifier/<%= pharmacien.Pharmacien_Id %>" method="POST">
+    <label for="nom">Nom:</label>
+    <input type="text" id="nom" name="nom" value="<%= pharmacien.Pharmacien_Nom %>"><br><br>
+    
+    <label for="prenom">Prénom:</label>
+    <input type="text" id="prenom" name="prenom" value="<%= pharmacien.Pharmacien_Prenom %>"><br><br>
+    
+    <label for="nomUtilisateur">Numéro de Téléphone:</label>
+    <input type="text" id="nomUtilisateur" name="nomUtilisateur" value="<%= pharmacien.Pharmacien_NomUtilisateur %>"><br><br>
+
+    <label for="motDePasse">Numéro de Téléphone:</label>
+    <input type="text" id="motDePasse" name="motDePasse" value="<%= pharmacien.Pharmacien_MotDePasse %>"><br><br>
+
+    <input type="submit" value="Enregistrer les modifications">
+  </form>
+</body>
+</html>

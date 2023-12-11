@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Modifier Médicament</title>
+  <link rel="stylesheet" href="/css/style_form.css">
+</head>
+<body>
+  <h1>Modifier Médicament</h1>
+
+  <form action="/medicaments/modifier/<%= medicament.Medicament_Id %>" method="POST">
+    <label for="nom">Nom :</label>
+    <input type="text" id="nom" name="nom" value="<%= medicament.Medicament_Nom %>"><br><br>
+    
+    <label for="stock">Stock :</label>
+    <input type="number" id="stock" name="stock" value="<%= medicament.Medicament_Stock %>"><br><br>
+    
+    <label for="prix">Prix :</label>
+    <input type="number" id="prix" name="prix" step="0.01" value="<%= medicament.Medicament_Prix %>"><br><br>
+
+    <input type="submit" value="Enregistrer les modifications">
+  </form>
+</body>
+</html>

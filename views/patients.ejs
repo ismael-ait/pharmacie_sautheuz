@@ -8,8 +8,11 @@
 </head>
 <body>
   <h1>Liste des Patients</h1>
-  <a href="/">Accueil</a>
+  <button type="button" onclick="window.location.href = '/'">Accueil</button>
 
+    <button type="button" onclick="window.location.href = '/patients/ajouter'">Ajouter</button>
+    <br>
+    <br>
   <table>
     <thead>
       <tr>
@@ -17,10 +20,10 @@
         <th>Nom</th>
         <th>Prénom</th>
         <th>Date de Naissance</th>
-        <th>Numéro de securité sociale</th>
+        <th>Numéro de sécurité sociale</th>
         <th>Numéro de téléphone</th>
         <th>Id mutuelle</th>
-
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -34,6 +37,18 @@
           <td><%= patient.Patient_NumeroTelephone %></td>
           <td><%= patient.Patient_IdMutuelle %></td>
 
+          <td>
+            <!-- Formulaire pour le bouton "Modifier" -->
+            <div class="button-group"> 
+              <form method="get" action="/patients/modifier/<%= patient.Patient_Id%>">
+                <button type="submit">Modifier</button>
+              </form>
+              <!-- Formulaire pour le bouton "Supprimer" -->
+              <form method="post" action="/patients/supprimer/<%= patient.Patient_Id%>">
+                <button type="submit">Supprimer</button>
+              </form>
+            </div>
+          </td>
 
         </tr>
       <% }); %>
