@@ -2,58 +2,53 @@
 <html>
 <head>
   <title>Liste des Médecins</title>
-  <link rel="stylesheet" href="/css/style_liste.css">
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
 </head>
 <body>
-  <div class="one">
-    <h1>Liste des Médecins</h1>
-  </div>
-  
+  <div class="container mt-4">
+    <div class="one bg-success text-white p-3">
+      <h1>Liste des Médecins</h1>
+    </div>
 
-  <!-- Bouton pour aller vers le formulaire d'ajout -->
+    <!-- Boutons pour naviguer -->
 
-  <button type="button" onclick="window.location.href = '/'">Accueil</button>
-
-    <button type="button" onclick="window.location.href = '/medecins/ajouter'">Ajouter</button>
+    <button class="btn btn-success mb-3" onclick="window.location.href = '/'">Accueil</button>
+    <button class="btn btn-success mb-3" onclick="window.location.href = '/medecins/ajouter'">Ajouter</button>
     <br>
     <br>
 
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nom</th>
-        <th>Prénom</th>
-        <th>Numéro de Téléphone</th>
-        <th>Actions</th>
-
-      </tr>
-    </thead>
-    <tbody>
-      <% medecins.forEach(medecin => { %>
+    <table class="table table-bordered">
+      <thead class="bg-success text-white">
         <tr>
-          <td><%= medecin.Medecin_Id %></td>
-          <td><%= medecin.Medecin_Nom %></td>
-          <td><%= medecin.Medecin_Prenom %></td>
-          <td><%= medecin.Medecin_NumeroTelephone %></td>
-          <!-- Ajout du bouton "Modifier" pour chaque médecin -->
-          <td>
-            <!-- Formulaire pour le bouton "Modifier" -->
-            <div class="button-group"> 
-              <form method="get" action="/medecins/modifier/<%= medecin.Medecin_Id %>">
-                <button type="submit">Modifier</button>
-              </form>
-              <!-- Formulaire pour le bouton "Supprimer" -->
-              <form method="post" action="/medecins/supprimer/<%= medecin.Medecin_Id %>">
-                <button type="submit">Supprimer</button>
-              </form>
-              
-            </div>
-            
-          </td>
+          <th>ID</th>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Numéro de Téléphone</th>
+          <th>Actions</th>
         </tr>
-      <% }); %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% medecins.forEach(medecin => { %>
+          <tr>
+            <td><%= medecin.Medecin_Id %></td>
+            <td><%= medecin.Medecin_Nom %></td>
+            <td><%= medecin.Medecin_Prenom %></td>
+            <td><%= medecin.Medecin_NumeroTelephone %></td>
+            <td>
+              <div class="btn-group">
+                <form method="get" action="/medecins/modifier/<%= medecin.Medecin_Id %>">
+                  <button class="btn btn-success" type="submit">Modifier</button>
+                </form>
+                <form method="post" action="/medecins/supprimer/<%= medecin.Medecin_Id %>">
+                  <button class="btn btn-danger" type="submit">Supprimer</button>
+                </form>
+              </div>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+  <script src="/bootstrap/dist/js/bootstrap.bundle.js"></script>
 </body>
 </html>
