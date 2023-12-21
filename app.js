@@ -9,17 +9,20 @@ const accueilRoutes = require('./routes/accueilRoutes');
 const medecinRoutes = require('./routes/medecinRoutes'); 
 const pharmacienRoutes = require('./routes/pharmacienRoutes');
 const medicamentRoutes = require('./routes/medicamentRoutes'); // Import du routeur des médicaments
+const ordonnanceRoutes = require('./routes/ordonnanceRoutes'); // Import du routeur des médicaments
 
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/css', express.static(__dirname + '/public/css'));
+app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist'));
 
 app.use('/patients', patientRoutes); // Route patients
 app.use('/medecins', medecinRoutes); // Route medecins
 app.use('/pharmaciens', pharmacienRoutes); // Route medecins
 app.use('/medicaments', medicamentRoutes); // Utilisation du routeur des médicaments
+app.use('/ordonnances', ordonnanceRoutes); // Utilisation du routeur des médicaments
 
 app.use('/', accueilRoutes); // Route accueil
 

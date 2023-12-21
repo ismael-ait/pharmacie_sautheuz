@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Liste des Ordonnances</title>
+  <link rel="stylesheet" href="/css/style_liste.css">
+</head>
+<body>
+  <div class="one">
+    <h1>Liste des Ordonnances</h1>
+  </div>
+
+  <!-- Bouton pour retourner à l'accueil ou à la liste principale -->
+  <button type="button" onclick="window.location.href = '/'">Accueil</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Médecin</th>
+        <th>Patient</th>
+        <th>Maladie</th>
+        <th>Date</th>
+        <!-- Vous pouvez ajouter d'autres colonnes au besoin -->
+      </tr>
+    </thead>
+    <tbody>
+      <% ordonnances.forEach(ordonnance => { %>
+        <tr>
+          <td><%= ordonnance.Ordonnance_Id %></td>
+          <td><%= ordonnance.MedecinNom %></td>
+          <td><%= ordonnance.PatientNom %></td>
+          <td><%= ordonnance.MaladieNom %></td>
+          <td><%= ordonnance.FormattedDate %></td>
+          <!-- Autres colonnes à afficher -->
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  
+</body>
+</html>
