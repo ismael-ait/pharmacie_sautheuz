@@ -1,51 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Liste des Médicaments</title>
-  <link rel="stylesheet" href="/css/style_liste.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pharmacie</title>
 </head>
 <body>
-  <div class="one">
-    <h1>Liste des Médicaments</h1>
-  </div>
+  <body>
   
-  <!-- Bouton pour aller vers le formulaire d'ajout -->
-  <button type="button" onclick="window.location.href = '/'">Accueil</button>
-
-    <button type="button" onclick="window.location.href = '/medicaments/ajouter'">Ajouter</button>
-    <br>
-    <br>
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nom</th>
-        <th>Stock</th>
-        <th>Prix</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% medicaments.forEach(medicament => { %>
-        <tr>
-          <td><%= medicament.Medicament_Id %></td>
-          <td><%= medicament.Medicament_Nom %></td>
-          <td><%= medicament.Medicament_Stock %></td>
-          <td><%= medicament.Medicament_Prix %></td>
-          <td>
-            <div class="button-group"> 
-              <form method="get" action="/medicaments/modifier/<%= medicament.Medicament_Id %>">
-                <button type="submit">Modifier</button>
-              </form>
-              <form method="post" action="/medicaments/supprimer/<%= medicament.Medicament_Id %>">
-                <button type="submit">Supprimer</button>
-              </form>
-            
+    <div class="container-fluid p-0 d-flex h-100">
+  
+      <%- include('accueil_clone') %> 
+  
+      <div class="bg-light flex-fill">
+        <div class="p-2 d-md-none d-flex text-white bg-success">
+            <a href="#" class="text-white" data-bs-toggle="offcanvas" data-bs-target="#bdSidebar">
+                <i class="fa-solid fa-bars"></i>
+            </a>
+        </div>
+        <div class="p-4">
+            <nav style="--bs-breadcrumb-divider:'>';font-size:14px">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><i class="fa-solid fa-house"></i></li>
+                    <li class="breadcrumb-item">Vue globale</li>
+                    <li class="breadcrumb-item">medicaments</li>
+                </ol>
+            </nav>
+            <div class="d-flex justify-content-between">
+                <h5>Medicaments</h5>
             </div>
-          </td>
-        </tr>
-      <% }); %>
-    </tbody>
-  </table>
+            <hr>
+          <div class="container">
+            <div class="row">
+                <div class="col">
+                  <table class="table table-striped mx-auto">
+                    <thead class="table-success text-dark">
+                      <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Stock</th>
+                        <th>Prix</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% medicaments.forEach(medicament => { %>
+                        <tr>
+                          <td><%= medicament.Medicament_Id %></td>
+                          <td><%= medicament.Medicament_Nom %></td>
+                          <td><%= medicament.Medicament_Stock %></td>
+                          <td><%= medicament.Medicament_Prix %></td>
+                          <td>
+                            <div class="btn-group">
+                              <form method="get" action="/medicaments/modifier/<%= medicament.Medicament_Id %>">
+                                <button class="btn btn-link btn-sm" type="submit"><i class="fas fa-pen-to-square"></i></button>
+                              </form>
+                              <form method="post" action="/medicaments/supprimer/<%= medicament.Medicament_Id %>">
+                                <button id ="boutonsModifer" class="btn btn-link btn-sm" type="submit"><i class="fas fa-times"></i></button>
+                              </form>
+                            </div>
+                          </td>
+                        </tr>
+                      <% }); %>
+                    </tbody>
+                  </table>
+                  
+                  <br>
+                  <hr>
+
+                  <div class="container mt-5">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <div class="bg-light rounded" style="border: 2px solid #343a40; padding: 20px;">
+                                <h3 class="text-success text-center mb-4">Ajouter un médicament</h3>
+                                <form action="/medicaments/ajouter" method="POST">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="nom">Nom du médicament :</label>
+                                        <input class="form-control" type="text" name="nom" id="nom">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="stock">Stock :</label>
+                                        <input class="form-control" type="number" name="stock" id="stock">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="prix">Prix :</label>
+                                        <input class="form-control" type="number" step="0.01" name="prix" id="prix">
+                                    </div>
+                                   
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-success">Ajouter</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+          </div>
+        </div>
+        
+    </div>
+  
+    
+  </div>
+    
+  </div>
+  </body>
 </body>
 </html>
