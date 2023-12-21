@@ -2,22 +2,34 @@
 <html>
 <head>
   <title>Modifier Médecin</title>
-  <link rel="stylesheet" href="/css/style_form.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-<body>
-  <h1>Modifier Médecin</h1>
+<body class="bg-light">
+  <div class="container mt-5">
+    <h1 class="mb-4">Modifier Médecin</h1>
 
-  <form action="/medecins/modifier/<%= medecin.Medecin_Id %>" method="POST">
-    <label for="nom">Nom:</label>
-    <input type="text" id="nom" name="nom" value="<%= medecin.Medecin_Nom %>"><br><br>
-    
-    <label for="prenom">Prénom:</label>
-    <input type="text" id="prenom" name="prenom" value="<%= medecin.Medecin_Prenom %>"><br><br>
-    
-    <label for="numeroTelephone">Numéro de Téléphone:</label>
-    <input type="text" id="numeroTelephone" name="numeroTelephone" value="<%= medecin.Medecin_NumeroTelephone %>"><br><br>
+    <form action="/medecins/modifier/<%= medecin.Medecin_Id %>" method="POST" class="rounded p-4 bg-white">
+      <div class="form-group">
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" value="<%= medecin.Medecin_Nom %>" class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label for="prenom">Prénom :</label>
+        <input type="text" id="prenom" name="prenom" value="<%= medecin.Medecin_Prenom %>" class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label for="numeroTelephone">Numéro de Téléphone :</label>
+        <input type="text" id="numeroTelephone" name="numeroTelephone" value="<%= medecin.Medecin_NumeroTelephone %>" class="form-control">
+      </div>
 
-    <input type="submit" value="Enregistrer les modifications">
-  </form>
+      <input type="submit" value="Enregistrer les modifications" class="btn btn-primary">
+    </form>
+  </div>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

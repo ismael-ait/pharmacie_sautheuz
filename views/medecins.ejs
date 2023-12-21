@@ -2,53 +2,62 @@
 <html>
 <head>
   <title>Liste des Médecins</title>
-  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body class="bg-light">
-  <div class="container mt-4">
-    <div class="one bg-success text-white p-3 rounded">
-      <h1>Liste des Médecins</h1>
-    </div>
 
-    <!-- Boutons pour naviguer -->
+  <%- include('sidebar') %>
 
-    <button class="btn btn-success mb-3" onclick="window.location.href = '/'">Accueil</button>
-    <button class="btn btn-success mb-3" onclick="window.location.href = '/medecins/ajouter'">Ajouter</button>
-    <br>
-    <br>
 
-    <table class="table table-bordered">
-      <thead class="bg-success text-white">
-        <tr>
-          <th>ID</th>
-          <th>Nom</th>
-          <th>Prénom</th>
-          <th>Numéro de Téléphone</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% medecins.forEach(medecin => { %>
+  <div class="content">
+    <!-- Contenu principal de la page -->
+    <h2>Liste des médecins </h2>
+  
+      <!-- Boutons pour naviguer -->
+      <div class="mb-3">
+        <a href="/medecins/ajouter" class="btn btn-info">Ajouter</a>
+      </div>
+  
+      <table class="table table-bordered" style="background-color: rgba(34, 118, 201, 0.1);">
+        <thead class="table-info text-dark">
           <tr>
-            <td><%= medecin.Medecin_Id %></td>
-            <td><%= medecin.Medecin_Nom %></td>
-            <td><%= medecin.Medecin_Prenom %></td>
-            <td><%= medecin.Medecin_NumeroTelephone %></td>
-            <td>
-              <div class="btn-group">
-                <form method="get" action="/medecins/modifier/<%= medecin.Medecin_Id %>">
-                  <button class="btn btn-success" type="submit">Modifier</button>
-                </form>
-                <form method="post" action="/medecins/supprimer/<%= medecin.Medecin_Id %>">
-                  <button class="btn btn-danger" type="submit">Supprimer</button>
-                </form>
-              </div>
-            </td>
+            <th >ID</th>
+            <th >Nom</th>
+            <th >Prénom</th>
+            <th >Numéro de Téléphone</th>
+            <th >Actions</th>
           </tr>
-        <% }); %>
-      </tbody>
-    </table>
-  </div>
-  <script src="/bootstrap/dist/js/bootstrap.bundle.js"></script>
+        </thead>
+        <tbody>
+          <% medecins.forEach(medecin => { %>
+            <tr>
+              <td><%= medecin.Medecin_Id %></td>
+              <td><%= medecin.Medecin_Nom %></td>
+              <td><%= medecin.Medecin_Prenom %></td>
+              <td><%= medecin.Medecin_NumeroTelephone %></td>
+              <td>
+                <div class="btn-group">
+                  <form method="get" action="/medecins/modifier/<%= medecin.Medecin_Id %>">
+                    <button class="btn btn-info btn-sm" type="submit"><i class="fas fa-pencil-alt"></i></button>
+                  </form>
+                  <form method="post" action="/medecins/supprimer/<%= medecin.Medecin_Id %>">
+                    <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-times"></i></button>
+                  </form>
+                </div>
+              </td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>  </div>
+
+
+  
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>

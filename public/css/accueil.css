@@ -1,38 +1,29 @@
-
-body {
-  background-color: #f0f0f0;
-  margin: 0;
-  font-family: Arial, sans-serif;
+/* accueil.css */
+.sidebar {
+  height: 100%;
+  width: 16rem; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #2276c9;
+  padding-top: 1.25rem; /* Equivalent to 20px using rem */
 }
 
-.container {
-  display: flex;
-  height: 90vh;
-  justify-content: flex-start;
-  align-items: center;
-  padding-left: 10px;
-}
-
-.buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-}
-
-.button {
-  padding: 15px 25px;
-  background-color: #3498db;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 18px;
+.sidebar a {
+  margin-bottom: 2rem; /* Equivalent to 20px using rem */
+  display: block;
+  padding: 0.625rem 0.9375rem; /* Equivalent to 10px 15px using rem */
+  font-size: 1.125rem; /* Equivalent to 18px using rem */
+  color: #fff;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.button:hover {
-  background-color: #2980b9;
+.sidebar a:hover {
+  background-color: #14161a6e;
 }
 
-
-  
+.content {
+  margin-left: 16rem; /* Equivalent to 250px using rem */
+  padding: 1.25rem; /* Equivalent to 20px using rem */
+}
