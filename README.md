@@ -8,7 +8,7 @@ Site web intranet permettant aux pharmaciens de gérer les patients, leurs ordon
 
 ### Base de données : <span style="font-size: smaller;">MySql</span>
 ### Back-end : <span style="font-size: smaller;">Node.Js, Express</span>
-### Front-end : <span style="font-size: smaller;">HTML, Css, Ejs</span>
+### Front-end : <span style="font-size: smaller;">HTML, Bootstrap, Css, Ejs</span>
 
 
 #### Auteur : <span style="font-size: smaller;">Ismaël A.L</span>
