@@ -1,63 +1,114 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Liste des Médecins</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacie Sautheuz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style_main.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </head>
-<body class="bg-light">
-
-  <%- include('sidebar') %>
-
-
-  <div class="content">
-    <!-- Contenu principal de la page -->
-    <h2>Liste des médecins </h2>
   
-      <!-- Boutons pour naviguer -->
-      <div class="mb-3">
-        <a href="/medecins/ajouter" class="btn btn-info">Ajouter</a>
-      </div>
-  
-      <table class="table table-bordered" style="background-color: rgba(34, 118, 201, 0.1);">
-        <thead class="table-info text-dark">
-          <tr>
-            <th >ID</th>
-            <th >Nom</th>
-            <th >Prénom</th>
-            <th >Numéro de Téléphone</th>
-            <th >Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% medecins.forEach(medecin => { %>
-            <tr>
-              <td><%= medecin.Medecin_Id %></td>
-              <td><%= medecin.Medecin_Nom %></td>
-              <td><%= medecin.Medecin_Prenom %></td>
-              <td><%= medecin.Medecin_NumeroTelephone %></td>
-              <td>
-                <div class="btn-group">
-                  <form method="get" action="/medecins/modifier/<%= medecin.Medecin_Id %>">
-                    <button class="btn btn-info btn-sm" type="submit"><i class="fas fa-pencil-alt"></i></button>
-                  </form>
-                  <form method="post" action="/medecins/supprimer/<%= medecin.Medecin_Id %>">
-                    <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-times"></i></button>
-                  </form>
+<div class="container-fluid p-0 d-flex h-100">
+
+  <%- include('accueil_clone') %> 
+
+  <div class="bg-light flex-fill">
+    <div class="p-2 d-md-none d-flex text-white bg-success">
+        <a href="#" class="text-white" data-bs-toggle="offcanvas" data-bs-target="#bdSidebar">
+            <i class="fa-solid fa-bars"></i>
+        </a>
+    </div>
+    <div class="p-4">
+        <nav style="--bs-breadcrumb-divider:'>';font-size:14px">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><i class="fa-solid fa-house"></i></li>
+                <li class="breadcrumb-item">Vue globale</li>
+                <li class="breadcrumb-item">médecins</li>
+            </ol>
+        </nav>
+        <div class="d-flex justify-content-between">
+            <h5>Médecins</h5>
+        </div>
+        <hr>
+      <div class="container">
+        <div class="row">
+            <div class="col">
+              <table class="table table-striped mx-auto">
+                <thead class="table-success text-dark">
+                  <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Numéro de Téléphone</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% medecins.forEach(medecin => { %>
+                    <tr>
+                      <td><%= medecin.Medecin_Id %></td>
+                      <td><%= medecin.Medecin_Nom %></td>
+                      <td><%= medecin.Medecin_Prenom %></td>
+                      <td><%= medecin.Medecin_NumeroTelephone %></td>
+                      <td>
+                        <div class="btn-group">
+                          <form method="get" action="/medecins/modifier/<%= medecin.Medecin_Id %>">
+                            <button class="btn btn-link btn-sm" type="submit"><i class="fas fa-pen-to-square"></i></button>
+                          </form>
+                          <form method="post" action="/medecins/supprimer/<%= medecin.Medecin_Id %>">
+                            <button id ="boutonsModifer" class="btn btn-link btn-sm" type="submit"><i class="fas fa-times"></i></button>
+                          </form>
+                        </div>
+                      </td>
+                    </tr>
+                  <% }); %>
+                </tbody>
+              </table>
+              
+              <br>
+              <hr>
+
+              <div class="container mt-5">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="bg-light rounded" style="border: 2px solid #343a40; padding: 20px;">
+                            <h3 class="text-success text-center mb-4">Ajouter un médecin</h3>
+                            <form action="/medecins/ajouter" method="POST">
+                                <div class="mb-3">
+                                    <label class="form-label" for="nom">Nom du médecin :</label>
+                                    <input class="form-control" type="text" name="nom" id="nom" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="prenom">Prénom du médecin :</label>
+                                    <input class="form-control" type="text" name="prenom" id="prenom" required >
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="numeroTelephone">Numéro de Téléphone :</label>
+                                    <input class="form-control" type="text" name="numeroTelephone" id="numeroTelephone" required>
+                                </div>
+                               
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-success">Ajouter</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-              </td>
-            </tr>
-          <% }); %>
-        </tbody>
-      </table>
-    </div>  </div>
+            </div>
 
-
-  
-  
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+            </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+</div>
 </body>
 </html>

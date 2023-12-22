@@ -1,26 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Modifier Médecin</title>
-  <link rel="stylesheet" href="/css/style_form.css">
+  <title>Modifier Pharmacien</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style_main.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </head>
 <body>
-  <h1>Modifier Médecin</h1>
-
-  <form action="/pharmaciens/modifier/<%= pharmacien.Pharmacien_Id %>" method="POST">
-    <label for="nom">Nom:</label>
-    <input type="text" id="nom" name="nom" value="<%= pharmacien.Pharmacien_Nom %>"><br><br>
-    
-    <label for="prenom">Prénom:</label>
-    <input type="text" id="prenom" name="prenom" value="<%= pharmacien.Pharmacien_Prenom %>"><br><br>
-    
-    <label for="nomUtilisateur">Numéro de Téléphone:</label>
-    <input type="text" id="nomUtilisateur" name="nomUtilisateur" value="<%= pharmacien.Pharmacien_NomUtilisateur %>"><br><br>
-
-    <label for="motDePasse">Numéro de Téléphone:</label>
-    <input type="text" id="motDePasse" name="motDePasse" value="<%= pharmacien.Pharmacien_MotDePasse %>"><br><br>
-
-    <input type="submit" value="Enregistrer les modifications">
-  </form>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="bg-light rounded" style="border: 2px solid #343a40; padding: 20px;">
+          <h3 class="text-success text-center mb-4">Modifier un pharmacien</h3>
+          <form action="/pharmaciens/modifier/<%= pharmacien.Pharmacien_Id %>" method="POST">
+            <div class="mb-3">
+              <label class="form-label" for="nom">Nom :</label>
+              <input class="form-control" type="text" name="nom" id="nom" required value="<%= pharmacien.Pharmacien_Nom %>">
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="prenom">Prénom :</label>
+              <input class="form-control" type="text" name="prenom" id="prenom" required value="<%= pharmacien.Pharmacien_Prenom %>">
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="nomUtilisateur">Nom d'utilisateur :</label>
+              <input class="form-control" type="text" name="nomUtilisateur" id="nomUtilisateur" required value="<%= pharmacien.Pharmacien_NomUtilisateur %>">
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="motDePasse">Mot de passe :</label>
+              <input class="form-control" type="text" name="motDePasse" id="motDePasse" required value="<%= pharmacien.Pharmacien_MotDePasse %>">
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-success">Enregistrer les modifications</button>
+              <a href="/pharmaciens" class="btn btn-secondary">Annuler</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

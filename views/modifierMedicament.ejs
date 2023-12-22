@@ -20,15 +20,15 @@
           <form action="/medicaments/modifier/<%= medicament.Medicament_Id %>" method="POST">
             <div class="mb-3">
               <label class="form-label" for="nom">Nom :</label>
-              <input class="form-control" type="text" name="nom" id="nom" value="<%= medicament.Medicament_Nom %>">
+              <input class="form-control" type="text" name="nom" id="nom" required value="<%= medicament.Medicament_Nom %>">
             </div>
             <div class="mb-3">
               <label class="form-label" for="stock">Stock :</label>
-              <input class="form-control" type="number" name="stock" id="stock" value="<%= medicament.Medicament_Stock %>">
+              <input class="form-control" type="number" name="stock" id="stock" required value="<%= medicament.Medicament_Stock %>">
             </div>
             <div class="mb-3">
               <label class="form-label" for="prix">Prix :</label>
-              <input class="form-control" type="number" step="0.01" name="prix" id="prix" value="<%= medicament.Medicament_Prix %>">
+              <input class="form-control" type="number" step="0.01" name="prix" id="prix" required value="<%= medicament.Medicament_Prix %>">
             </div>
             <div class="text-center">
               <button type="submit" class="btn btn-success">Enregistrer les modifications</button>
