@@ -1,0 +1,85 @@
+<%- include('header') %>
+
+<div class="bg-light flex-fill">
+  <div class="p-2 d-md-none d-flex text-white bg-success">
+    <a href="#" class="text-white" data-bs-toggle="offcanvas" data-bs-target="#bdSidebar">
+      <i class="fa-solid fa-bars"></i>
+    </a>
+  </div>
+  <div class="p-4">
+    <nav style="--bs-breadcrumb-divider:'>';font-size:14px">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><i class="fa-solid fa-house"></i></li>
+        <li class="breadcrumb-item">Vue globale</li>
+        <li class="breadcrumb-item">Mutuelles</li>
+      </ol>
+    </nav>
+    <div class="d-flex justify-content-between">
+      <h5>Mutuelles</h5>
+    </div>
+    <hr>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <table class="table table-striped mx-auto">
+            <thead class="table-success text-dark">
+              <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Taux</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% mutuelles.forEach(mutuelle => { %>
+                <tr>
+                  <td><%= mutuelle.Mutuelle_Id %></td>
+                  <td><%= mutuelle.Mutuelle_Nom %></td>
+                  <td><%= mutuelle.Mutuelle_Taux %></td>
+                  <td>
+                    <div class="btn-group">
+                      <form method="get" action="/mutuelles/modifier/<%= mutuelle.Mutuelle_Id %>">
+                        <button class="btn btn-link btn-sm" type="submit"><i class="fas fa-pen-to-square"></i></button>
+                      </form>
+                      <form method="post" action="/mutuelles/supprimer/<%= mutuelle.Mutuelle_Id %>">
+                        <button id="boutonsModifer" class="btn btn-link btn-sm" type="submit"><i class="fas fa-times"></i></button>
+                      </form>
+                    </div>
+                  </td>
+                </tr>
+              <% }); %>
+            </tbody>
+          </table>
+
+          <br>
+          <hr>
+
+          <div class="container mt-5">
+            <div class="row justify-content-center">
+              <div class="col-md-6">
+                <div class="bg-light rounded" style="border: 2px solid #343a40; padding: 20px;">
+                  <h3 class="text-success text-center mb-4">Ajouter une mutuelle</h3>
+                  <form action="/mutuelles/ajouter" method="POST">
+                    <div class="mb-3">
+                      <label class="form-label" for="nom">Nom :</label>
+                      <input class="form-control" type="text" name="nom" id="nom" required>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label" for="taux">Taux :</label>
+                      <input class="form-control" type="number" name="taux" id="taux" required>
+                    </div>
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-success">Ajouter</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('footer') %>

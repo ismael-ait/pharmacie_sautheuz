@@ -10,6 +10,8 @@ const medecinRoutes = require('./routes/medecinRoutes');
 const pharmacienRoutes = require('./routes/pharmacienRoutes');
 const medicamentRoutes = require('./routes/medicamentRoutes'); // Import du routeur des médicaments
 const ordonnanceRoutes = require('./routes/ordonnanceRoutes'); // Import du routeur des médicaments
+const pathologieRoutes = require('./routes/pathologieRoutes');
+const mutuelleRoutes = require('./routes/mutuelleRoutes');
 
 app.set('view engine', 'ejs');
 
@@ -23,6 +25,8 @@ app.use('/medecins', medecinRoutes); // Route medecins
 app.use('/pharmaciens', pharmacienRoutes); // Route medecins
 app.use('/medicaments', medicamentRoutes); // Utilisation du routeur des médicaments
 app.use('/ordonnances', ordonnanceRoutes); // Utilisation du routeur des médicaments
+app.use('/pathologies', pathologieRoutes);
+app.use('/mutuelles', mutuelleRoutes);
 
 app.use('/', accueilRoutes); // Route accueil
 

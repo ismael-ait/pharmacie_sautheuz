@@ -37,3 +37,9 @@ html,body{
     padding: 0px 8px;
     border-radius: 2px;
 }
+
+
+.flex-fill {
+overflow-y: auto; /* Ajoute un défilement vertical en cas de dépassement du contenu */
+}
+  

@@ -1,32 +1,44 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Modifier Patient</title>
-  <link rel="stylesheet" href="/css/style_form.css">
-</head>
+<%- include('script_header') %> 
+
 <body>
-  <h1>Modifier Patient</h1>
-
-  <form action="/patients/modifier/<%= patient.Patient_Id %>" method="POST">
-    <label for="nom">Nom :</label>
-    <input type="text" id="nom" name="nom" value="<%= patient.Patient_Nom %>" required><br>
-
-    <label for="prenom">Prénom :</label>
-    <input type="text" id="prenom" name="prenom" value="<%= patient.Patient_Prenom %>" required><br>
-
-    <label for="dateNaissance">Date de Naissance :</label>
-    <input type="date" id="dateNaissance" name="dateNaissance" value="<%= patient.Patient_DateNaissance%>" required><br>
-
-    <label for="numeroSecurite">Numéro de Sécurité :</label>
-    <input type="text" id="numeroSecurite" name="numeroSecurite" value="<%= patient.Patient_NumeroSecurite %>" required><br>
-
-    <label for="numeroTelephone">Numéro de Téléphone :</label>
-    <input type="text" id="numeroTelephone" name="numeroTelephone" value="<%= patient.Patient_NumeroTelephone %>" required><br>
-
-    <label for="idMutuelle">ID Mutuelle :</label>
-    <input type="text" id="idMutuelle" name="idMutuelle" value="<%= patient.Patient_IdMutuelle %>" required><br>
-
-    <input type="submit" value="Enregistrer les modifications">
-  </form>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="bg-light rounded" style="border: 2px solid #343a40; padding: 20px;">
+          <h3 class="text-success text-center mb-4">Modifier un patient</h3>
+          <form action="/patients/modifier/<%= patient.Patient_Id %>" method="POST">
+            <div class="mb-3">
+              <label class="form-label" for="nom">Nom :</label>
+              <input class="form-control" type="text" id="nom" name="nom" value="<%= patient.Patient_Nom %>" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="prenom">Prénom :</label>
+              <input class="form-control" type="text" id="prenom" name="prenom" value="<%= patient.Patient_Prenom %>" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="dateNaissance">Date de Naissance :</label>
+              <input class="form-control" type="date" id="dateNaissance" name="dateNaissance" value="<%= patient.Patient_DateNaissance%>" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="numeroSecurite">Numéro de Sécurité :</label>
+              <input class="form-control" type="text" id="numeroSecurite" name="numeroSecurite" value="<%= patient.Patient_NumeroSecurite %>" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="numeroTelephone">Numéro de Téléphone :</label>
+              <input class="form-control" type="text" id="numeroTelephone" name="numeroTelephone" value="<%= patient.Patient_NumeroTelephone %>" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="idMutuelle">ID Mutuelle :</label>
+              <input class="form-control" type="text" id="idMutuelle" name="idMutuelle" value="<%= patient.Patient_IdMutuelle %>" required>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-success">Enregistrer les modifications</button>
+              <a href="/patients" class="btn btn-secondary">Annuler</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

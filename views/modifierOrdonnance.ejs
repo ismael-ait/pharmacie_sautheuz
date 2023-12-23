@@ -1,0 +1,36 @@
+<%- include('script_header') %> 
+
+<body>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="bg-light rounded" style="border: 2px solid #343a40; padding: 20px;">
+          <h3 class="text-success text-center mb-4">Modifier une ordonnance</h3>
+          <form action="/ordonnances/modifier/<%= ordonnance.Ordonnance_Id %>" method="POST">
+            <div class="mb-3">
+              <label class="form-label" for="idMedecin">ID Médecin :</label>
+              <input class="form-control" type="number" name="idMedecin" id="idMedecin" required value="<%= ordonnance.Ordonnance_IdMedecin %>">
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="idPatient">ID Patient :</label>
+              <input class="form-control" type="number" name="idPatient" id="idPatient" required value="<%= ordonnance.Ordonnance_IdPatient %>">
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="idMaladie">ID Maladie :</label>
+              <input class="form-control" type="number" name="idMaladie" id="idMaladie" required value="<%= ordonnance.Ordonnance_IdMaladie %>">
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="date">Date :</label>
+              <input class="form-control" type="date" name="date" id="date" required value="<%= ordonnance.Ordonnance_Date %>">
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-success">Enregistrer les modifications</button>
+              <a href="/ordonnances" class="btn btn-secondary">Annuler</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

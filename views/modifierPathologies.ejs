@@ -1,0 +1,24 @@
+<%- include('script_header') %> 
+
+<body>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="bg-light rounded" style="border: 2px solid #343a40; padding: 20px;">
+          <h3 class="text-success text-center mb-4">Modifier une pathologie</h3>
+          <form action="/pathologies/modifier/<%= pathologie.Pathologie_Id %>" method="POST">
+            <div class="mb-3">
+              <label class="form-label" for="nom">Nom de la pathologie :</label>
+              <input class="form-control" type="text" name="nom" id="nom" required value="<%= pathologie.Pathologie_Nom %>">
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-success">Enregistrer les modifications</button>
+              <a href="/pathologies" class="btn btn-secondary">Annuler</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
