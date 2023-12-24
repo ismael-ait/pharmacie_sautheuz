@@ -11,9 +11,7 @@ const medicamentController = {
     });
   },
 
-  addMedicamentForm: (req, res) => {
-    res.render('ajouterMedicament'); // Créez une vue pour ajouter un médicament
-  },
+ 
 
   addMedicament: (req, res) => {
     const { nom, stock, prix } = req.body;

@@ -93,11 +93,6 @@ const patientController = {
 
 
 
-
-
-// Pour le formatage, créer un objet Date à partir du paramètre dateString fourni à la fonction
-// La date complète est reconstituée à partir des éléments date day month year.
-
 function formatDate(dateString) {
   const date = new Date(dateString);
   const isoDate = date.toISOString().split('T')[0]; // Format AAAA-MM-JJ

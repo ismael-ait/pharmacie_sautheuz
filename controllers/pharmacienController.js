@@ -11,10 +11,7 @@ const pharmacienController = {
     });
   },
 
-  addPharmacienForm: (req, res) => {
-    res.render('ajouterPharmacien'); // vue d'ajout pharmacien
-  },
-
+ 
   addPharmacien: (req, res) => {
     const { nom, prenom, nomUtilisateur, motDePasse } = req.body;
     const newPharmacien = {

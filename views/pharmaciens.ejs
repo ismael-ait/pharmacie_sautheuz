@@ -65,27 +65,40 @@
                             <div class="bg-light rounded" style="border: 2px solid #343a40; padding: 20px;">
                                 <h3 class="text-success text-center mb-4">Ajouter un pharmacien</h3>
                                 <form action="/pharmaciens/ajouter" method="POST">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="nom">Nom :</label>
-                                        <input class="form-control" type="text" name="nom" id="nom" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label" for="prenom">Prenom :</label>
-                                        <input class="form-control" type="text" name="prenom" id="prenom" required >
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label" for="nomUtilisateur">Nom d'utilisateur :</label>
-                                        <input class="form-control" type="text" name="nomUtilisateur" id="nomUtilisateur" required>
-                                    </div>
-                                    <div class="mb-3">
+                                  <div class="mb-3">
+                                      <label class="form-label" for="nom">Nom :</label>
+                                      <input class="form-control" type="text" name="nom" id="nom" required>
+                                      <!-- Affichage de l'erreur pour le nom -->
+                                      <% if (typeof nomError !== 'undefined') { %>
+                                          <div class="invalid-feedback" style="display: block;">
+                                              <%= nomError %>
+                                          </div>
+                                      <% } %>
+                                  </div>
+                                  <div class="mb-3">
+                                      <label class="form-label" for="prenom">Prenom :</label>
+                                      <input class="form-control" type="text" name="prenom" id="prenom" required >
+                                      <!-- Affichage de l'erreur pour le prénom -->
+                                      <% if (typeof prenomError !== 'undefined') { %>
+                                          <div class="invalid-feedback" style="display: block;">
+                                              <%= prenomError %>
+                                          </div>
+                                      <% } %>
+                                  </div>
+                                  <div class="mb-3">
+                                      <label class="form-label" for="nomUtilisateur">Nom d'utilisateur :</label>
+                                      <input class="form-control" type="text" name="nomUtilisateur" id="nomUtilisateur" required>
+                                  </div>
+                                  <div class="mb-3">
                                       <label class="form-label" for="motDePasse">Mot de passe :</label>
                                       <input class="form-control" type="password" name="motDePasse" id="motDePasse" required>
                                   </div>
-                                   
-                                    <div class="text-center">
-                                        <button type="submit" class="btn btn-success">Ajouter</button>
-                                    </div>
-                                </form>
+                                 
+                                  <div class="text-center">
+                                      <button type="submit" class="btn btn-success">Ajouter</button>
+                                  </div>
+                              </form>
+                              
                             </div>
                         </div>
                     </div>

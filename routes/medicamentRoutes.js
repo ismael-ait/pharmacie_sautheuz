@@ -3,7 +3,6 @@ const router = express.Router();
 const medicamentController = require('../controllers/medicamentController');
 
 router.get('/', medicamentController.getAllMedicaments);
-router.get('/ajouter', medicamentController.addMedicamentForm);
 router.post('/ajouter', medicamentController.addMedicament);
 
 // Route pour la modification du médicament
