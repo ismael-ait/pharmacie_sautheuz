@@ -18,14 +18,11 @@ const pathologieController = {
       if (error) {
         res.status(500).send('Erreur lors de la récupération de la pathologie');
       } else {
-        res.render('pathologieDetails', { pathologie: pathologie });
+        res.render('modifierPathologie', { pathologie: pathologie });
       }
     });
   },
 
-  addPathologieForm: (req, res) => {
-    res.render('ajouterPathologie'); // Vue pour ajouter une pathologie
-  },
 
   addPathologie: (req, res) => {
     const { nom } = req.body;

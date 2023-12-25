@@ -56,30 +56,41 @@
               <br>
               <hr>
 
-              <div class="container mt-5">
-                <div class="row justify-content-center">
-                    <div class="col-md-6">
-                        <div class="bg-light rounded" style="border: 2px solid #343a40; padding: 20px;">
-                            <h3 class="text-success text-center mb-4">Ajouter un médecin</h3>
-                            <form action="/medecins/ajouter" method="POST">
-                              <div class="mb-3">
-                                <label class="form-label" for="nom">Nom du médecin :</label>
-                                <input class="form-control" type="text" name="nom" id="nom" required>
-                              </div>
-                              <div class="mb-3">
-                                <label class="form-label" for="prenom">Prénom du médecin :</label>
-                                <input class="form-control" type="text" name="prenom" id="prenom" required>
-                              </div>
-                              <div class="mb-3">
-                                <label class="form-label" for="numeroTelephone">Numéro de Téléphone :</label>
-                                <input class="form-control" type="text" name="numeroTelephone" id="numeroTelephone" required>
-                                <!-- Affichage de l'erreur -->
-                                <% if (typeof error !== 'undefined') { %>
-                                  <div class="invalid-feedback" style="display: block;">
-                                    <%= error %>
-                                  </div>
-                                <% } %>
-                              </div>
+              <div class="row justify-content-center">
+                <div class="col-md-6">
+                  <div class="bg-light rounded" style="border: 2px solid #343a40; padding: 20px;">
+                    <h3 class="text-success text-center mb-4">Ajouter un médecin</h3>
+                    <form action="/medecins/ajouter" method="POST">
+                      <div class="mb-3">
+                        <label class="form-label" for="nom">Nom du médecin :</label>
+                        <input class="form-control" type="text" name="nom" id="nom" required>
+                        <!-- Affichage des erreurs pour le nom -->
+                        <% if (typeof errors !== 'undefined' && errors.includes('Le nom saisi est invalide.')) { %>
+                          <div class="invalid-feedback" style="display: block;">
+                            Le nom saisi est invalide.
+                          </div>
+                        <% } %>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label" for="prenom">Prénom du médecin :</label>
+                        <input class="form-control" type="text" name="prenom" id="prenom" required>
+                        <!-- Affichage des erreurs pour le prénom -->
+                        <% if (typeof errors !== 'undefined' && errors.includes('Le prénom saisi est invalide.')) { %>
+                          <div class="invalid-feedback" style="display: block;">
+                            Le prénom saisi est invalide.
+                          </div>
+                        <% } %>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label" for="numeroTelephone">Numéro de Téléphone :</label>
+                        <input class="form-control" type="text" name="numeroTelephone" id="numeroTelephone" required>
+                        <!-- Affichage des erreurs pour le numéro de téléphone -->
+                        <% if (typeof errors !== 'undefined' && errors.includes('Le numéro de téléphone doit contenir 10 chiffres et commencer par 06 ou 07.')) { %>
+                          <div class="invalid-feedback" style="display: block;">
+                            Le numéro de téléphone doit contenir 10 chiffres et commencer par 06 ou 07.
+                          </div>
+                        <% } %>
+                      </div>
                             
                               <!-- Bouton de soumission -->
                               <div class="text-center">

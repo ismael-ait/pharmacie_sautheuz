@@ -3,7 +3,6 @@ const router = express.Router();
 const ordonnanceController = require('../controllers/ordonnanceController');
 
 router.get('/', ordonnanceController.getAllOrdonnances);
-router.get('/ajouter', ordonnanceController.addOrdonnanceForm);
 router.post('/ajouter', ordonnanceController.addOrdonnance);
 
 // Route pour la modification de l'ordonnance

@@ -5,9 +5,6 @@ const patientController = require('../controllers/patientController'); // Import
 // Route pour afficher la liste des patients
 router.get('/', patientController.getAllPatients); // Utilisation du contrôleur
 
-// Route pour afficher le formulaire d'ajout d'un patient
-router.get('/ajouter', patientController.addPatientForm);
-
 // Route pour ajouter un nouveau patient
 router.post('/ajouter', patientController.addPatient);
 

@@ -1,4 +1,5 @@
 const Pharmacien = require('../models/pharmacien');
+const validationUtils = require('./validationUtils'); 
 
 const pharmacienController = {
   getAllPharmaciens: (req, res) => {
@@ -11,23 +12,47 @@ const pharmacienController = {
     });
   },
 
- 
   addPharmacien: (req, res) => {
     const { nom, prenom, nomUtilisateur, motDePasse } = req.body;
-    const newPharmacien = {
-      Pharmacien_Nom: nom,
-      Pharmacien_Prenom: prenom,
-      Pharmacien_NomUtilisateur: nomUtilisateur,
-      Pharmacien_MotDePasse: motDePasse
-    };
+   
+    let errors = [];
 
-    Pharmacien.addPharmacien(newPharmacien, (error, result) => {
-      if (error) {
-        res.status(500).send('Erreur lors de l\'ajout du pharmacien');
-      } else {
-        res.redirect('/pharmaciens'); // Redirige après l'ajout
-      }
-    });
+    if (!validationUtils.validateName(nom)) {
+      errors.push('Le nom saisi est invalide.');
+    }
+
+    if (!validationUtils.validateName(prenom)) {
+      errors.push('Le prénom saisi est invalide.');
+    }
+
+    if (errors.length > 0) {
+
+      Pharmacien.getAllPharmaciens((error, results) => {
+        if (error) {
+          res.status(500).send('Erreur lors de la récupération des pharmaciens');
+        } else {
+          res.render('pharmaciens', {
+            pharmaciens: results,
+            errors: errors // 
+          });
+        }
+      });
+    } else {
+      const newPharmacien = {
+        Pharmacien_Nom: nom,
+        Pharmacien_Prenom: prenom,
+        Pharmacien_NomUtilisateur: nomUtilisateur,
+        Pharmacien_MotDePasse: motDePasse
+      };
+  
+      Pharmacien.addPharmacien(newPharmacien, (error, result) => {
+        if (error) {
+          res.status(500).send('Erreur lors de l\'ajout du pharmacien');
+        } else {
+          res.redirect('/pharmaciens'); // Redirige après l'ajout
+        }
+      });
+    }
   },
   
   getPharmacienById: (req, res) => {

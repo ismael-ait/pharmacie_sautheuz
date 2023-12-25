@@ -1,4 +1,5 @@
 const Medicament = require('../models/medicament');
+const validationUtils = require('./validationUtils'); // Chemin vers votre fichier de fonctions de validation
 
 const medicamentController = {
   getAllMedicaments: (req, res) => {
@@ -15,19 +16,43 @@ const medicamentController = {
 
   addMedicament: (req, res) => {
     const { nom, stock, prix } = req.body;
-    const newMedicament = {
-      Medicament_Nom: nom,
-      Medicament_Stock: stock,
-      Medicament_Prix: prix
-    };
+    let errors = [];
 
-    Medicament.addMedicament(newMedicament, (error, result) => {
-      if (error) {
-        res.status(500).send('Erreur lors de l\'ajout du médicament');
-      } else {
-        res.redirect('/medicaments'); // Redirige après l'ajout
-      }
-    });
+    // Validation du nom du médicament
+    if (!validationUtils.validateName(nom)) {
+      errors.push('Le nom saisi est invalide.');
+    }
+
+    // Autres validations ici si nécessaire...
+
+    if (errors.length > 0) {
+      // Gestion des erreurs - rediriger vers la vue des médicaments avec les erreurs
+      Medicament.getAllMedicaments((error, results) => {
+        if (error) {
+          res.status(500).send('Erreur lors de la récupération des médicaments');
+        } else {
+          res.render('medicaments', {
+            medicaments: results,
+            errors: errors // Envoyer le tableau d'erreurs à la vue
+          });
+        }
+      });
+    } else {
+      // Ajout du médicament si la validation est réussie
+      const newMedicament = {
+        Medicament_Nom: nom,
+        Medicament_Stock: stock,
+        Medicament_Prix: prix
+      };
+
+      Medicament.addMedicament(newMedicament, (error, result) => {
+        if (error) {
+          res.status(500).send('Erreur lors de l\'ajout du médicament');
+        } else {
+          res.redirect('/medicaments'); // Rediriger après l'ajout
+        }
+      });
+    }
   },
   
   getMedicamentById: (req, res) => {

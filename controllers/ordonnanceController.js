@@ -1,22 +1,48 @@
 const Ordonnance = require('../models/ordonnance');
+const Patient = require('../models/patient');
+const Medecin = require('../models/medecin');
+const Pathologie = require('../models/pathologie');
+
+let patientsListe = [];
+let medecinsListe = [];
+let pathologiesListe = [];
 
 const ordonnanceController = {
   getAllOrdonnances: (req, res) => {
-    Ordonnance.getAllOrdonnances((error, ordonnances) => {
-      if (error) {
+    Ordonnance.getAllOrdonnances((errorOrdonnance, ordonnances) => {
+      if (errorOrdonnance) {
         res.status(500).send('Erreur lors de la récupération des ordonnances');
       } else {
-        res.render('ordonnances', { ordonnances: ordonnances });
+        Patient.getAllPatients((errorPatients, patients) => {
+          if (errorPatients) {
+            res.status(500).send('Erreur lors de la récupération des patients');
+          } else {
+            Medecin.getAllMedecins((errorMedecins, medecins) => {
+              if (errorMedecins) {
+                res.status(500).send('Erreur lors de la récupération des médecins');
+              } else {
+                Pathologie.getAllPathologies((errorPathologies, pathologies) => {
+                  if (errorPathologies) {
+                    res.status(500).send('Erreur lors de la récupération des pathologies');
+                  } else {
+                    patientsListe = patients;
+                    medecinsListe = medecins;
+                    pathologiesListe = pathologies;
+                    res.render('ordonnances', { ordonnances: ordonnances, patients: patientsListe, medecins: medecinsListe, pathologies: pathologiesListe });
+                  }
+                });
+              }
+            });
+          }
+        });
       }
     });
   },
 
-  addOrdonnanceForm: (req, res) => {
-    res.render('ajouterOrdonnance'); // Créez une vue pour ajouter une ordonnance
-  },
 
   addOrdonnance: (req, res) => {
     const { idMedecin, idPatient, idMaladie, date } = req.body;
+ 
     const newOrdonnance = {
       Ordonnance_IdMedecin: idMedecin,
       Ordonnance_IdPatient: idPatient,
@@ -35,12 +61,17 @@ const ordonnanceController = {
 
   getOrdonnanceById: (req, res) => {
     const ordonnanceId = req.params.id;
-
+    const medecins = medecinsListe;
+    const patients = patientsListe;
+    const pathologies = pathologiesListe
     Ordonnance.getOrdonnanceById(ordonnanceId, (error, ordonnance) => {
       if (error) {
         res.status(500).send('Erreur lors de la récupération de l\'ordonnance');
       } else {
-        res.render('modifierOrdonnance', { ordonnance: ordonnance });
+        res.render('modifierOrdonnance', { ordonnance: ordonnance,
+          patients: patients,
+          medecins: medecins,
+          pathologies: pathologies});
       }
     });
   },

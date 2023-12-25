@@ -65,16 +65,33 @@
                           <h3 class="text-success text-center mb-4">Ajouter une ordonnance</h3>
                           <form action="/ordonnances/ajouter" method="POST">
                             <div class="mb-3">
-                              <label class="form-label" for="idMedecin">ID Médecin :</label>
-                              <input class="form-control" type="number" name="idMedecin" id="idMedecin" required>
+                              <label class="form-label" for="Medecin">Médecin :</label>
+                              <select class="form-select" name="idMedecin" id="idMedecin" required>
+                                <option value="" selected disabled>Sélectionner un médecin</option>
+                                <% medecins.forEach(medecin => { %>
+                                  <option value="<%= medecin.Medecin_Id %>"><%= medecin.Medecin_Nom %> <%= medecin.Medecin_Prenom %></option>
+                                <% }); %>
+                              </select>
                             </div>
                             <div class="mb-3">
                               <label class="form-label" for="idPatient">ID Patient :</label>
-                              <input class="form-control" type="number" name="idPatient" id="idPatient" required>
+                              <select class="form-select" name="idPatient" id="idPatient" required>
+                                <option value="" selected disabled>Sélectionner un patient</option>
+                                <% patients.forEach(patient => { %>
+                                  <option value="<%= patient.Patient_Id %>"><%= patient.Patient_Nom %> <%= patient.Patient_Prenom %></option>
+                                <% }); %>
+                              </select>
+                              
                             </div>
                             <div class="mb-3">
                               <label class="form-label" for="idMaladie">ID Maladie :</label>
-                              <input class="form-control" type="number" name="idMaladie" id="idMaladie" required>
+                              <select class="form-select" name="idMaladie" id="idMaladie" required>
+                                <option value="" selected disabled>Sélectionner une maladie</option>
+                                <% pathologies.forEach(pathologie => { %>
+                                  <option value="<%= pathologie.Maladie_Id %>"><%= pathologie.Maladie_Nom %></option>
+                                <% }); %>
+                              </select>
+                              
                             </div>
                             <div class="mb-3">
                               <label class="form-label" for="date">Date :</label>

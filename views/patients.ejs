@@ -30,7 +30,7 @@
                         <th>Date de naissance</th>
                         <th>N° Sécurité sociale</th>
                         <th>N° de téléphone</th>
-                        <th>ID Mutuelle</th>
+                        <th>Mutuelle</th>
                         <th>Actions</th>
 
                       </tr>
@@ -44,7 +44,12 @@
                           <td><%= patient.Patient_DateNaissance %></td>
                           <td><%= patient.Patient_NumeroSecurite %></td>
                           <td><%= patient.Patient_NumeroTelephone %></td>
-                          <td><%= patient.Patient_IdMutuelle %></td>
+                          <td>
+                            <% mutuelles.forEach(mutuelle => {
+                              if (mutuelle.Mutuelle_Id === patient.Patient_IdMutuelle) { %>
+                                <%= mutuelle.Mutuelle_Nom %>
+                            <% }}); %>
+                          </td>
                           <td>
                             <div class="btn-group">
                               <form method="get" action="/patients/modifier/<%= patient.Patient_Id %>">
@@ -72,10 +77,20 @@
                                   <div class="mb-3">
                                     <label class="form-label" for="nom">Nom :</label>
                                     <input class="form-control" type="text" name="nom" id="nom" required>
+                                    <% if (typeof errors !== 'undefined' && errors.includes('Le nom saisi est invalide.')) { %>
+                                      <div class="invalid-feedback" style="display: block;">
+                                        Le nom saisi est invalide.
+                                      </div>
+                                    <% } %>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="prenom">Prenom :</label>
                                     <input class="form-control" type="text" name="prenom" id="prenom" required>
+                                    <% if (typeof errors !== 'undefined' && errors.includes('Le prénom saisi est invalide.')) { %>
+                                      <div class="invalid-feedback" style="display: block;">
+                                        Le prénom saisi est invalide.
+                                      </div>
+                                    <% } %>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="dateNaissance">Date de Naissance :</label>
@@ -84,20 +99,37 @@
                                 <div class="mb-3">
                                     <label class="form-label" for="numeroSecurite">Numéro de sécurité sociale :</label>
                                     <input class="form-control" type="text" name="numeroSecurite" id="numeroSecurite" required>
+                                    <% if (typeof errors !== 'undefined' && errors.includes('Le numéro de sécurité sociale doit contenir exactement 13 chiffres.')) { %>
+                                      <div class="invalid-feedback" style="display: block;">
+                                        Le numéro de sécurité sociale doit contenir exactement 13 chiffres.                                      </div>
+                                    <% } %>
+                                    
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="numeroTelephone">Numéro de téléphone :</label>
                                     <input class="form-control" type="text" name="numeroTelephone" id="numeroTelephone" required>
+                                    <% if (typeof errors !== 'undefined' && errors.includes('Le numéro de téléphone doit contenir 10 chiffres et commencer par 06 ou 07.')) { %>
+                                      <div class="invalid-feedback" style="display: block;">
+                                        Le numéro de téléphone doit contenir 10 chiffres et commencer par 06 ou 07.
+                                      </div>
+                                    <% } %>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label" for="idMutuelle">Id mutuelle :</label>
-                                    <input class="form-control" type="text" name="idMutuelle" id="idMutuelle" required>
+                                  <label class="form-label" for="idMutuelle">Mutuelle :</label>
+                                  <select class="form-select" name="idMutuelle" id="idMutuelle" required>
+                                    <option value="" selected disabled>Sélectionner une mutuelle</option>
+                                    <% mutuelles.forEach(mutuelle => { %>
+                                      <option value="<%= mutuelle.Mutuelle_Id %>"><%= mutuelle.Mutuelle_Nom %></option>
+                                    <% }); %>
+                                  </select>
                                 </div>
+                              
+                                <!-- ... Autres champs du formulaire ... -->
+                              
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-success">Ajouter</button>
+                                  <button type="submit" class="btn btn-success">Ajouter</button>
                                 </div>
-                                </form>
-                                
+                              </form>
                             </div>
                             
                         </div>

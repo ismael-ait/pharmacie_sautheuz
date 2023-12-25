@@ -1,4 +1,5 @@
 const Medecin = require('../models/medecin');
+const validationUtils = require('./validationUtils'); // Chemin vers votre fichier de fonctions de validation
 
 const medecinController = {
   getAllMedecins: (req, res) => {
@@ -11,27 +12,34 @@ const medecinController = {
     });
   },
 
-  
-
-  validatePhoneNumber: (phoneNumber) => {
-    // Vérifier si le numéro a exactement 10 chiffres et commence par 06 ou 07
-    const phoneNumberRegex = /^(06|07)\d{8}$/; // Regex pour vérifier le format du numéro de téléphone
-
-    return phoneNumberRegex.test(phoneNumber);
-  },
 
   addMedecin: (req, res) => {
     const { nom, prenom, numeroTelephone } = req.body;
+    let errors = [];
 
     // Validation du numéro de téléphone
-    if (!medecinController.validatePhoneNumber(numeroTelephone)) {
+    if (!validationUtils.validatePhoneNumber(numeroTelephone)) {
+      errors.push('Le numéro de téléphone doit contenir 10 chiffres et commencer par 06 ou 07.');
+    }
+
+    // Validation du nom
+    if (!validationUtils.validateName(nom)) {
+      errors.push('Le nom saisi est invalide.');
+    }
+
+    // Validation du prénom
+    if (!validationUtils.validateName(prenom)) {
+      errors.push('Le prénom saisi est invalide.');
+    }
+
+    if (errors.length > 0) {
       Medecin.getAllMedecins((error, results) => {
         if (error) {
           res.status(500).send('Erreur lors de la récupération des médecins');
         } else {
           res.render('medecins', {
             medecins: results,
-            error: 'Le numéro de téléphone doit contenir 10 chiffres et commencer par 06 ou 07.'
+            errors: errors // Afficher les erreurs dans le template
           });
         }
       });

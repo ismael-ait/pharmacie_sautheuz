@@ -5,8 +5,6 @@ const pathologieController = require('../controllers/pathologieController'); // 
 // Route pour afficher la liste des pathologies
 router.get('/', pathologieController.getAllPathologies); // Utilisation du contrôleur
 
-// Route pour afficher le formulaire d'ajout d'une pathologie
-router.get('/ajouter', pathologieController.addPathologieForm);
 
 // Route pour ajouter une nouvelle pathologie
 router.post('/ajouter', pathologieController.addPathologie);

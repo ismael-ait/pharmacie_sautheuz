@@ -69,20 +69,19 @@
                                       <label class="form-label" for="nom">Nom :</label>
                                       <input class="form-control" type="text" name="nom" id="nom" required>
                                       <!-- Affichage de l'erreur pour le nom -->
-                                      <% if (typeof nomError !== 'undefined') { %>
-                                          <div class="invalid-feedback" style="display: block;">
-                                              <%= nomError %>
-                                          </div>
+                                      <% if (typeof errors !== 'undefined' && errors.includes('Le nom saisi est invalide.')) { %>
+                                        <div class="invalid-feedback" style="display: block;">
+                                          Le nom saisi est invalide.
+                                        </div>
                                       <% } %>
                                   </div>
                                   <div class="mb-3">
                                       <label class="form-label" for="prenom">Prenom :</label>
                                       <input class="form-control" type="text" name="prenom" id="prenom" required >
-                                      <!-- Affichage de l'erreur pour le prénom -->
-                                      <% if (typeof prenomError !== 'undefined') { %>
-                                          <div class="invalid-feedback" style="display: block;">
-                                              <%= prenomError %>
-                                          </div>
+                                      <% if (typeof errors !== 'undefined' && errors.includes('Le prénom saisi est invalide.')) { %>
+                                        <div class="invalid-feedback" style="display: block;">
+                                          Le prénom saisi est invalide.
+                                        </div>
                                       <% } %>
                                   </div>
                                   <div class="mb-3">

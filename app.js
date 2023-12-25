@@ -30,11 +30,5 @@ app.use('/mutuelles', mutuelleRoutes);
 app.use('/', accueilRoutes); // Route accueil
 
 
-
-
-
-
-
-
 // Écoute sur le port 5000
 app.listen(port, () => console.log(`Écoute sur le port ${port}`));

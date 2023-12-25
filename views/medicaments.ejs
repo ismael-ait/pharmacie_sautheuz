@@ -64,6 +64,11 @@
                                     <div class="mb-3">
                                         <label class="form-label" for="nom">Nom du médicament :</label>
                                         <input class="form-control" type="text" name="nom" id="nom" required>
+                                        <% if (typeof errors !== 'undefined' && errors.includes('Le nom saisi est invalide.')) { %>
+                                          <div class="invalid-feedback" style="display: block;">
+                                            Le nom saisi est invalide.
+                                          </div>
+                                        <% } %>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label" for="stock">Stock :</label>

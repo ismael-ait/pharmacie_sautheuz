@@ -37,10 +37,10 @@
                                 <!-- Remplissez les autres colonnes si nécessaire -->
                                 <td>
                                     <div class="btn-group">
-                                        <form method="get" action="/pathologies/modifier/<%= pathologie.Pathologie_Id %>">
+                                        <form method="get" action="/pathologies/modifier/<%= pathologie.Maladie_Id %>">
                                             <button class="btn btn-link btn-sm" type="submit"><i class="fas fa-pen-to-square"></i></button>
                                         </form>
-                                        <form method="post" action="/pathologies/supprimer/<%= pathologie.Pathologie_Id %>">
+                                        <form method="post" action="/pathologies/supprimer/<%= pathologie.Maladie_Nom %>">
                                             <button id ="boutonsModifier" class="btn btn-link btn-sm" type="submit"><i class="fas fa-times"></i></button>
                                         </form>
                                     </div>

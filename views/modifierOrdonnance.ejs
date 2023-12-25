@@ -8,16 +8,31 @@
           <h3 class="text-success text-center mb-4">Modifier une ordonnance</h3>
           <form action="/ordonnances/modifier/<%= ordonnance.Ordonnance_Id %>" method="POST">
             <div class="mb-3">
-              <label class="form-label" for="idMedecin">ID Médecin :</label>
-              <input class="form-control" type="number" name="idMedecin" id="idMedecin" required value="<%= ordonnance.Ordonnance_IdMedecin %>">
+              <label class="form-label" for="idMedecin">Médecin :</label>
+              <select class="form-select" name="idMedecin" id="idMedecin" required>
+                <option value="" selected disabled>Sélectionner un médecin</option>
+                <% medecins.forEach(medecin => { %>
+                  <option value="<%= medecin.Medecin_Id %>" <%= medecin.Medecin_Id === ordonnance.Ordonnance_IdMedecin ? 'selected' : '' %>><%= medecin.Medecin_Nom %> <%= medecin.Medecin_Prenom %></option>
+                <% }); %>
+              </select>
             </div>
             <div class="mb-3">
-              <label class="form-label" for="idPatient">ID Patient :</label>
-              <input class="form-control" type="number" name="idPatient" id="idPatient" required value="<%= ordonnance.Ordonnance_IdPatient %>">
+              <label class="form-label" for="idPatient">Patient :</label>
+              <select class="form-select" name="idPatient" id="idPatient" required>
+                <option value="" selected disabled>Sélectionner un patient</option>
+                <% patients.forEach(patient => { %>
+                  <option value="<%= patient.Patient_Id %>" <%= patient.Patient_Id === ordonnance.Ordonnance_IdPatient ? 'selected' : '' %>><%= patient.Patient_Nom %> <%= patient.Patient_Prenom %></option>
+                <% }); %>
+              </select>
             </div>
             <div class="mb-3">
-              <label class="form-label" for="idMaladie">ID Maladie :</label>
-              <input class="form-control" type="number" name="idMaladie" id="idMaladie" required value="<%= ordonnance.Ordonnance_IdMaladie %>">
+              <label class="form-label" for="idMaladie">Maladie :</label>
+              <select class="form-select" name="idMaladie" id="idMaladie" required>
+                <option value="" selected disabled>Sélectionner une maladie</option>
+                <% pathologies.forEach(pathologie => { %>
+                  <option value="<%= pathologie.Maladie_Id %>" <%= pathologie.Maladie_Id === ordonnance.Ordonnance_IdMaladie ? 'selected' : '' %>><%= pathologie.Maladie_Nom %></option>
+                <% }); %>
+              </select>
             </div>
             <div class="mb-3">
               <label class="form-label" for="date">Date :</label>
