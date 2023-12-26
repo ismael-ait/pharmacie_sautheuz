@@ -70,19 +70,43 @@ const medicamentController = {
   updateMedicament: (req, res) => {
     const medicamentId = req.params.id;
     const { nom, stock, prix } = req.body;
-    const updatedMedicament = {
-      Medicament_Nom: nom,
-      Medicament_Stock: stock,
-      Medicament_Prix: prix
-    };
+    let errors = [];
 
-    Medicament.updateMedicament(medicamentId, updatedMedicament, (error, result) => {
-      if (error) {
-        res.status(500).send('Erreur lors de la mise à jour du médicament');
-      } else {
-        res.redirect('/medicaments'); // Redirige après la mise à jour
-      }
-    });
+    // Validation du nom du médicament
+    if (!validationUtils.validateName(nom)) {
+      errors.push('Le nom saisi est invalide.');
+    }
+
+    // Autres validations ici si nécessaire...
+
+    if (errors.length > 0) {
+      // Gestion des erreurs - renvoyer vers la vue de modification de médicament avec les erreurs
+      Medicament.getMedicamentById(medicamentId, (error, medicament) => {
+        if (error) {
+          res.status(500).send('Erreur lors de la récupération du médicament');
+        } else {
+          res.render('modifierMedicament', {
+            medicament: medicament,
+            errors: errors // Envoyer le tableau d'erreurs à la vue de modification de médicament
+          });
+        }
+      });
+    } else {
+      // Modification du médicament si la validation est réussie
+      const updatedMedicament = {
+        Medicament_Nom: nom,
+        Medicament_Stock: stock,
+        Medicament_Prix: prix
+      };
+
+      Medicament.updateMedicament(medicamentId, updatedMedicament, (error, result) => {
+        if (error) {
+          res.status(500).send('Erreur lors de la mise à jour du médicament');
+        } else {
+          res.redirect('/medicaments'); // Redirige après la mise à jour
+        }
+      });
+    }
   },
 
   deleteMedicament: (req, res) => {

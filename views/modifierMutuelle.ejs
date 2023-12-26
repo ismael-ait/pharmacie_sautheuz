@@ -6,10 +6,20 @@
       <div class="col-md-6">
         <div class="bg-light rounded" style="border: 2px solid #343a40; padding: 20px;">
           <h3 class="text-success text-center mb-4">Modifier une mutuelle</h3>
+          <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+            <div class="alert alert-danger" role="alert">
+              <% errors.forEach((error) => { %>
+                <p><%= error %></p>
+              <% }); %>
+            </div>
+          <% } %>
           <form action="/mutuelles/modifier/<%= mutuelle.Mutuelle_Id %>" method="POST">
             <div class="mb-3">
               <label class="form-label" for="nom">Nom de la mutuelle :</label>
-              <input class="form-control" type="text" name="nom" id="nom" required value="<%= mutuelle.Mutuelle_Nom %>">
+              <input class="form-control <%= typeof errors !== 'undefined' && errors.includes('Le nom de la mutuelle saisi est invalide.') ? 'is-invalid' : '' %>" type="text" name="nom" id="nom" required value="<%= mutuelle.Mutuelle_Nom %>">
+              <% if (typeof errors !== 'undefined' && errors.includes('Le nom de la mutuelle saisi est invalide.')) { %>
+                
+              <% } %>
             </div>
             <div class="mb-3">
               <label class="form-label" for="taux">Taux :</label>

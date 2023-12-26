@@ -63,12 +63,12 @@ const pathologieController = {
       Maladie_Nom: nom
     };
     let errors = [];
-
+  
     // Validation du nom de la pathologie en utilisant la fonction validateName existante
     if (!validationUtils.validateName(nom)) {
       errors.push('Le nom de la pathologie saisi est invalide.');
     }
-
+  
     if (errors.length > 0) {
       // En cas d'erreurs, renvoyer vers la vue avec les erreurs et la pathologie à modifier
       Pathologie.getPathologieById(pathologieId, (error, pathologie) => {
