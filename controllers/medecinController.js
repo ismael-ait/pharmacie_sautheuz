@@ -75,19 +75,49 @@ const medecinController = {
   updateMedecin: (req, res) => {
     const medecinId = req.params.id;
     const { nom, prenom, numeroTelephone } = req.body;
-    const updatedMedecin = {
-      Medecin_Nom: nom,
-      Medecin_Prenom: prenom,
-      Medecin_NumeroTelephone: numeroTelephone
-    };
+    let errors = [];
 
-    Medecin.updateMedecin(medecinId, updatedMedecin, (error, result) => {
-      if (error) {
-        res.status(500).send('Erreur lors de la mise à jour du médecin');
-      } else {
-        res.redirect('/medecins'); // Redirige après la mise à jour
-      }
-    });
+    // Validation du numéro de téléphone
+    if (!validationUtils.validatePhoneNumber(numeroTelephone)) {
+      errors.push('Le numéro de téléphone doit contenir 10 chiffres et commencer par 06 ou 07.');
+    }
+
+    // Validation du nom
+    if (!validationUtils.validateName(nom)) {
+      errors.push('Le nom saisi est invalide.');
+    }
+
+    // Validation du prénom
+    if (!validationUtils.validateName(prenom)) {
+      errors.push('Le prénom saisi est invalide.');
+    }
+
+    if (errors.length > 0) {
+      Medecin.getMedecinById(medecinId, (error, medecin) => {
+        if (error) {
+          res.status(500).send('Erreur lors de la récupération du médecin');
+        } else {
+          res.render('modifierMedecin', {
+            medecin: medecin,
+            errors: errors // Afficher les erreurs dans le template
+          });
+        }
+      });
+    } else {
+      const updatedMedecin = {
+        Medecin_Nom: nom,
+        Medecin_Prenom: prenom,
+        Medecin_NumeroTelephone: numeroTelephone
+      };
+
+      Medecin.updateMedecin(medecinId, updatedMedecin, (error, result) => {
+        if (error) {
+          res.status(500).send('Erreur lors de la mise à jour du médecin');
+        } else {
+          res.redirect('/medecins'); // Redirige après la mise à jour
+        }
+      });
+    }
   },
 
   deleteMedecin: (req, res) => {

@@ -69,21 +69,45 @@ const pharmacienController = {
   updatePharmacien: (req, res) => {
     const pharmacienId = req.params.id;
     const { nom, prenom, nomUtilisateur, motDePasse } = req.body;
-    const updatedPharmacien = {
-      Pharmacien_Nom: nom,
-      Pharmacien_Prenom: prenom,
-      Pharmacien_NomUtilisateur: nomUtilisateur,
-      Pharmacien_MotDePasse: motDePasse
-    };
+    let errors = [];
 
-    Pharmacien.updatePharmacien(pharmacienId, updatedPharmacien, (error, result) => {
-      if (error) {
-        res.status(500).send('Erreur lors de la mise à jour du pharmacien');
-      } else {
-        res.redirect('/pharmaciens'); // Redirige après la mise à jour
-      }
-    });
+    if (!validationUtils.validateName(nom)) {
+      errors.push('Le nom saisi est invalide.');
+    }
+
+    if (!validationUtils.validateName(prenom)) {
+      errors.push('Le prénom saisi est invalide.');
+    }
+
+    if (errors.length > 0) {
+      Pharmacien.getPharmacienById(pharmacienId, (error, pharmacien) => {
+        if (error) {
+          res.status(500).send('Erreur lors de la récupération du pharmacien');
+        } else {
+          res.render('modifierPharmacien', {
+            pharmacien: pharmacien,
+            errors: errors // Afficher les erreurs dans le template
+          });
+        }
+      });
+    } else {
+      const updatedPharmacien = {
+        Pharmacien_Nom: nom,
+        Pharmacien_Prenom: prenom,
+        Pharmacien_NomUtilisateur: nomUtilisateur,
+        Pharmacien_MotDePasse: motDePasse
+      };
+
+      Pharmacien.updatePharmacien(pharmacienId, updatedPharmacien, (error, result) => {
+        if (error) {
+          res.status(500).send('Erreur lors de la mise à jour du pharmacien');
+        } else {
+          res.redirect('/pharmaciens'); // Redirige après la mise à jour
+        }
+      });
+    }
   },
+
 
   deletePharmacien: (req, res) => {
     const pharmacienId = req.params.id;

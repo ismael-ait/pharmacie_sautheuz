@@ -6,6 +6,14 @@
       <div class="col-md-6">
         <div class="bg-light rounded" style="border: 2px solid #343a40; padding: 20px;">
           <h3 class="text-success text-center mb-4">Modifier une pathologie</h3>
+          <!-- Vérifier si errors est défini -->
+          <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+            <div class="alert alert-danger">
+              <% errors.forEach(function(error) { %>
+                <p><%= error %></p>
+              <% }); %>
+            </div>
+          <% } %>
           <form action="/pathologies/modifier/<%= pathologie.Maladie_Id %>" method="POST">
             <div class="mb-3">
               <label class="form-label" for="nom">Nom de la pathologie :</label>

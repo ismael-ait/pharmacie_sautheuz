@@ -91,6 +91,8 @@ const patientController = {
 
   getPatientById: (req, res) => {
     const patientId = req.params.id;
+    const mutuelles = mutuellesList;
+
 
     Patient.getPatientById(patientId, (error, patient) => {
       if (error) {
@@ -99,7 +101,8 @@ const patientController = {
         // Formater la date de naissance avant de l'afficher
         patient.Patient_DateNaissance = formatDate(patient.Patient_DateNaissance);
 
-        res.render('modifierPatient', { patient: patient });
+        res.render('modifierPatient', { patient: patient, mutuelles: mutuelles
+        });
       }
     });
   },
@@ -107,22 +110,64 @@ const patientController = {
   updatePatient: (req, res) => {
     const patientId = req.params.id;
     const { nom, prenom, dateNaissance, numeroSecurite, numeroTelephone, idMutuelle } = req.body;
-    const updatedPatient = {
-      Patient_Nom: nom,
-      Patient_Prenom: prenom,
-      Patient_DateNaissance: dateNaissance,
-      Patient_NumeroSecurite: numeroSecurite,
-      Patient_NumeroTelephone: numeroTelephone,
-      Patient_IdMutuelle: idMutuelle
-    };
+    let errors = [];
+    const mutuelles = mutuellesList;
 
-    Patient.updatePatient(patientId, updatedPatient, (error, result) => {
-      if (error) {
-        res.status(500).send('Erreur lors de la mise à jour du patient');
-      } else {
-        res.redirect('/patients'); // Redirige après la mise à jour
-      }
-    });
+
+
+    // Validation du nom
+    if (!validationUtils.validateName(nom)) {
+      errors.push('Le nom saisi est invalide.');
+    }
+
+    // Validation du prénom
+    if (!validationUtils.validateName(prenom)) {
+      errors.push('Le prénom saisi est invalide.');
+    }
+
+    // Validation du numéro de téléphone
+    if (!validationUtils.validatePhoneNumber(numeroTelephone)) {
+      errors.push('Le numéro de téléphone doit contenir 10 chiffres et commencer par 06 ou 07.');
+    }
+
+    // Validation du numéro de sécurité sociale
+    if (!validationUtils.validateSocialSecurityNumber(numeroSecurite)) {
+      errors.push('Le numéro de sécurité sociale doit contenir exactement 13 chiffres.');
+    }
+
+    if (errors.length > 0) {
+      Patient.getPatientById(patientId, (error, patient) => {
+        if (error) {
+          res.status(500).send('Erreur lors de la récupération du patient');
+        } else {
+          // Formater la date de naissance avant de l'afficher
+          patient.Patient_DateNaissance = formatDate(patient.Patient_DateNaissance);
+
+          res.render('modifierPatient', {
+            patient: patient,
+            mutuelles: mutuelles,
+            errors: errors // Affichage des erreurs
+          });
+        }
+      });
+    } else {
+      const updatedPatient = {
+        Patient_Nom: nom,
+        Patient_Prenom: prenom,
+        Patient_DateNaissance: dateNaissance,
+        Patient_NumeroSecurite: numeroSecurite,
+        Patient_NumeroTelephone: numeroTelephone,
+        Patient_IdMutuelle: idMutuelle
+      };
+
+      Patient.updatePatient(patientId, updatedPatient, (error, result) => {
+        if (error) {
+          res.status(500).send('Erreur lors de la mise à jour du patient');
+        } else {
+          res.redirect('/patients'); // Redirige après la mise à jour
+        }
+      });
+    }
   },
 
   deletePatient: (req, res) => {

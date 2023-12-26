@@ -8,15 +8,30 @@
           <form action="/medecins/modifier/<%= medecin.Medecin_Id %>" method="POST">
             <div class="mb-3">
               <label class="form-label" for="nom">Nom :</label>
-              <input class="form-control" type="text" name="nom" id="nom" required value="<%= medecin.Medecin_Nom %>">
+              <input class="form-control <%= typeof errors !== 'undefined' && errors.includes('Le nom saisi est invalide.') ? 'is-invalid' : '' %>" type="text" name="nom" id="nom" required value="<%= medecin.Medecin_Nom %>">
+              <% if (typeof errors !== 'undefined' && errors.includes('Le nom saisi est invalide.')) { %>
+                <div class="invalid-feedback" style="display: block;">
+                  Le nom saisi est invalide.
+                </div>
+              <% } %>
             </div>
             <div class="mb-3">
               <label class="form-label" for="prenom">Prénom :</label>
-              <input class="form-control" type="text" name="prenom" id="prenom" required value="<%= medecin.Medecin_Prenom %>">
+              <input class="form-control <%= typeof errors !== 'undefined' && errors.includes('Le prénom saisi est invalide.') ? 'is-invalid' : '' %>" type="text" name="prenom" id="prenom" required value="<%= medecin.Medecin_Prenom %>">
+              <% if (typeof errors !== 'undefined' && errors.includes('Le prénom saisi est invalide.')) { %>
+                <div class="invalid-feedback" style="display: block;">
+                  Le prénom saisi est invalide.
+                </div>
+              <% } %>
             </div>
             <div class="mb-3">
               <label class="form-label" for="numeroTelephone">Numéro de Téléphone :</label>
-              <input class="form-control" type="text" name="numeroTelephone" id="numeroTelephone" required value="<%= medecin.Medecin_NumeroTelephone %>">
+              <input class="form-control <%= typeof errors !== 'undefined' && errors.includes('Le numéro de téléphone doit contenir 10 chiffres et commencer par 06 ou 07.') ? 'is-invalid' : '' %>" type="text" name="numeroTelephone" id="numeroTelephone" required value="<%= medecin.Medecin_NumeroTelephone %>">
+              <% if (typeof errors !== 'undefined' && errors.includes('Le numéro de téléphone doit contenir 10 chiffres et commencer par 06 ou 07.')) { %>
+                <div class="invalid-feedback" style="display: block;">
+                  Le numéro de téléphone doit contenir 10 chiffres et commencer par 06 ou 07.
+                </div>
+              <% } %>
             </div>
             <div class="text-center">
               <button type="submit" class="btn btn-success">Enregistrer les modifications</button>

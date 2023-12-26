@@ -1,4 +1,5 @@
 const Mutuelle = require('../models/mutuelle');
+const validationUtils = require('./validationUtils');
 
 const mutuelleController = {
   getAllMutuelles: (req, res) => {
@@ -11,22 +12,38 @@ const mutuelleController = {
     });
   },
 
-  addMutuelleForm: (req, res) => {
-    res.render('ajouterMutuelle');
-  },
-
   addMutuelle: (req, res) => {
     const { nom, taux } = req.body;
     const newMutuelle = { Mutuelle_Nom: nom, Mutuelle_Taux: taux };
+    let errors = [];
+    let mutuelles = []; // Déclaration d'une variable mutuelles pour la transmission
 
-    Mutuelle.addMutuelle(newMutuelle, (err) => {
-      if (err) {
-        res.status(500).json({ error: err.message });
+    // Récupération de la liste des mutuelles même en cas d'erreur
+    Mutuelle.getAllMutuelles((err, mutuellesList) => {
+      if (mutuellesList) {
+        mutuelles = mutuellesList;
+      }
+
+      // Validation du nom de la mutuelle en utilisant la fonction validateName existante
+      if (!validationUtils.validateName(nom)) {
+        errors.push('Le nom de la mutuelle saisi est invalide.');
+      }
+
+      if (errors.length > 0) {
+        // En cas d'erreurs, renvoyer vers la vue avec les erreurs et la liste des mutuelles
+        res.render('mutuelles', { mutuelles, errors });
       } else {
-        res.redirect('/mutuelles');
+        Mutuelle.addMutuelle(newMutuelle, (err) => {
+          if (err) {
+            res.status(500).send('Erreur lors de l\'ajout de la mutuelle');
+          } else {
+            res.redirect('/mutuelles');
+          }
+        });
       }
     });
   },
+
 
   getMutuelleById: (req, res) => {
     const mutuelleId = req.params.id;

@@ -9,11 +9,21 @@
           <form action="/patients/modifier/<%= patient.Patient_Id %>" method="POST">
             <div class="mb-3">
               <label class="form-label" for="nom">Nom :</label>
-              <input class="form-control" type="text" id="nom" name="nom" value="<%= patient.Patient_Nom %>" required>
+              <input class="form-control <%= typeof errors !== 'undefined' && errors.includes('Le nom saisi est invalide.') ? 'is-invalid' : '' %>" type="text" id="nom" name="nom" value="<%= patient.Patient_Nom %>" required>
+              <% if (typeof errors !== 'undefined' && errors.includes('Le nom saisi est invalide.')) { %>
+                <div class="invalid-feedback" style="display: block;">
+                  Le nom saisi est invalide.
+                </div>
+              <% } %>
             </div>
             <div class="mb-3">
               <label class="form-label" for="prenom">Prénom :</label>
-              <input class="form-control" type="text" id="prenom" name="prenom" value="<%= patient.Patient_Prenom %>" required>
+              <input class="form-control <%= typeof errors !== 'undefined' && errors.includes('Le prénom saisi est invalide.') ? 'is-invalid' : '' %>" type="text" id="prenom" name="prenom" value="<%= patient.Patient_Prenom %>" required>
+              <% if (typeof errors !== 'undefined' && errors.includes('Le prénom saisi est invalide.')) { %>
+                <div class="invalid-feedback" style="display: block;">
+                  Le prénom saisi est invalide.
+                </div>
+              <% } %>
             </div>
             <div class="mb-3">
               <label class="form-label" for="dateNaissance">Date de Naissance :</label>
@@ -21,17 +31,31 @@
             </div>
             <div class="mb-3">
               <label class="form-label" for="numeroSecurite">Numéro de Sécurité :</label>
-              <input class="form-control" type="text" id="numeroSecurite" name="numeroSecurite" value="<%= patient.Patient_NumeroSecurite %>" required>
+              <input class="form-control <%= typeof errors !== 'undefined' && errors.includes('Le numéro de sécurité sociale doit contenir exactement 13 chiffres.') ? 'is-invalid' : '' %>" type="text" id="numeroSecurite" name="numeroSecurite" value="<%= patient.Patient_NumeroSecurite %>" required>
+              <% if (typeof errors !== 'undefined' && errors.includes('Le numéro de sécurité sociale doit contenir exactement 13 chiffres.')) { %>
+                <div class="invalid-feedback" style="display: block;">
+                  Le numéro de sécurité sociale doit contenir exactement 13 chiffres.
+                </div>
+              <% } %>
             </div>
             <div class="mb-3">
               <label class="form-label" for="numeroTelephone">Numéro de Téléphone :</label>
-              <input class="form-control" type="text" id="numeroTelephone" name="numeroTelephone" value="<%= patient.Patient_NumeroTelephone %>" required>
+              <input class="form-control <%= typeof errors !== 'undefined' && errors.includes('Le numéro de téléphone doit contenir 10 chiffres et commencer par 06 ou 07.') ? 'is-invalid' : '' %>" type="text" id="numeroTelephone" name="numeroTelephone" value="<%= patient.Patient_NumeroTelephone %>" required>
+              <% if (typeof errors !== 'undefined' && errors.includes('Le numéro de téléphone doit contenir 10 chiffres et commencer par 06 ou 07.')) { %>
+                <div class="invalid-feedback" style="display: block;">
+                  Le numéro de téléphone doit contenir 10 chiffres et commencer par 06 ou 07.
+                </div>
+              <% } %>
             </div>
             <div class="mb-3">
-              <label class="form-label" for="idMutuelle">ID Mutuelle :</label>
-              <input class="form-control" type="text" id="idMutuelle" name="idMutuelle" value="<%= patient.Patient_IdMutuelle %>" required>
+              <label class="form-label" for="idMutuelle">Mutuelle :</label>
+              <select class="form-select" name="idMutuelle" id="idMutuelle" required>
+                <option value="" selected disabled>Sélectionner une mutuelle</option>
+                <% mutuelles.forEach(mutuelle => { %>
+                  <option value="<%= mutuelle.Mutuelle_Id %>"><%= mutuelle.Mutuelle_Nom %></option>
+                <% }); %>
+              </select>
             </div>
-            <div class="text-center">
               <button type="submit" class="btn btn-success">Enregistrer les modifications</button>
               <a href="/patients" class="btn btn-secondary">Annuler</a>
             </div>

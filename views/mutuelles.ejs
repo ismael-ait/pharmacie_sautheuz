@@ -62,7 +62,12 @@
                   <form action="/mutuelles/ajouter" method="POST">
                     <div class="mb-3">
                       <label class="form-label" for="nom">Nom :</label>
-                      <input class="form-control" type="text" name="nom" id="nom" required>
+                      <input class="form-control <%= typeof errors !== 'undefined' && errors.length > 0 && errors.includes('Le nom de la mutuelle saisi est invalide.') ? 'is-invalid' : '' %>" type="text" name="nom" id="nom" required>
+                      <% if (typeof errors !== 'undefined' && errors.length > 0 && errors.includes('Le nom de la mutuelle saisi est invalide.')) { %>
+                        <div class="invalid-feedback" style="display: block;">
+                          Le nom de la mutuelle saisi est invalide.
+                        </div>
+                      <% } %>
                     </div>
                     <div class="mb-3">
                       <label class="form-label" for="taux">Taux :</label>

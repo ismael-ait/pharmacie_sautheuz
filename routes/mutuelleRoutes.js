@@ -5,9 +5,6 @@ const mutuelleController = require('../controllers/mutuelleController'); // Impo
 // Route pour afficher la liste des mutuelles
 router.get('/', mutuelleController.getAllMutuelles); // Utilisation du contrôleur
 
-// Route pour afficher le formulaire d'ajout d'une mutuelle
-router.get('/ajouter', mutuelleController.addMutuelleForm);
-
 // Route pour ajouter une nouvelle mutuelle
 router.post('/ajouter', mutuelleController.addMutuelle);
 

@@ -40,7 +40,7 @@
                                         <form method="get" action="/pathologies/modifier/<%= pathologie.Maladie_Id %>">
                                             <button class="btn btn-link btn-sm" type="submit"><i class="fas fa-pen-to-square"></i></button>
                                         </form>
-                                        <form method="post" action="/pathologies/supprimer/<%= pathologie.Maladie_Nom %>">
+                                        <form method="post" action="/pathologies/supprimer/<%= pathologie.Maladie_Id %>">
                                             <button id ="boutonsModifier" class="btn btn-link btn-sm" type="submit"><i class="fas fa-times"></i></button>
                                         </form>
                                     </div>
@@ -63,6 +63,14 @@
                                             <label class="form-label" for="nom">Nom :</label>
                                             <input class="form-control" type="text" name="nom" id="nom" required>
                                         </div>
+                                        <!-- Vérifier si errors est défini -->
+                                        <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+                                            <div class="alert alert-danger">
+                                                <% errors.forEach(function(error) { %>
+                                                    <p><%= error %></p>
+                                                <% }); %>
+                                            </div>
+                                        <% } %>
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-success">Ajouter</button>
                                         </div>
@@ -71,6 +79,7 @@
                             </div>
                         </div>
                     </div>
+                    
 
                 </div>
             </div>
