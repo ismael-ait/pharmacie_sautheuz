@@ -85,11 +85,13 @@
                         <label class="form-label" for="numeroTelephone">Numéro de Téléphone :</label>
                         <input class="form-control" type="text" name="numeroTelephone" id="numeroTelephone" required>
                         <!-- Affichage des erreurs pour le numéro de téléphone -->
-                        <% if (typeof errors !== 'undefined' && errors.includes('Le numéro de téléphone doit contenir 10 chiffres et commencer par 06 ou 07.')) { %>
-                          <div class="invalid-feedback" style="display: block;">
-                            Le numéro de téléphone doit contenir 10 chiffres et commencer par 06 ou 07.
+                        <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+                          <div class="alert alert-danger">
+                              <% errors.forEach(function(error) { %>
+                                  <p><%= error %></p>
+                              <% }); %>
                           </div>
-                        <% } %>
+                      <% } %>
                       </div>
                             
                               <!-- Bouton de soumission -->

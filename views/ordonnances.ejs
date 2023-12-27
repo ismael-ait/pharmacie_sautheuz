@@ -74,7 +74,7 @@
                               </select>
                             </div>
                             <div class="mb-3">
-                              <label class="form-label" for="idPatient">ID Patient :</label>
+                              <label class="form-label" for="idPatient">Patient :</label>
                               <select class="form-select" name="idPatient" id="idPatient" required>
                                 <option value="" selected disabled>Sélectionner un patient</option>
                                 <% patients.forEach(patient => { %>
@@ -84,7 +84,7 @@
                               
                             </div>
                             <div class="mb-3">
-                              <label class="form-label" for="idMaladie">ID Maladie :</label>
+                              <label class="form-label" for="idMaladie">Maladie :</label>
                               <select class="form-select" name="idMaladie" id="idMaladie" required>
                                 <option value="" selected disabled>Sélectionner une maladie</option>
                                 <% pathologies.forEach(pathologie => { %>
@@ -96,6 +96,23 @@
                             <div class="mb-3">
                               <label class="form-label" for="date">Date :</label>
                               <input class="form-control" type="date" name="date" id="date" required>
+                            </div>
+                            <div class="mb-3">
+                              <label class="form-label" for="duree">Durée de la posologie (en jours) :</label>
+                              <input class="form-control" type="number" name="duree" id="duree" required>
+                            </div>
+                            <div class="mb-3">
+                              <label class="form-label" for="idMedicament">Médicament :</label>
+                              <select class="form-select" name="idMedicament" id="idMedicament" required>
+                                <option value="" selected disabled>Sélectionner un médicament</option>
+                                <% medicaments.forEach(medicament => { %>
+                                  <option value="<%= medicament.Medicament_Id %>"><%= medicament.Medicament_Nom %></option>
+                                <% }); %>
+                              </select>
+                            </div>
+                            <div class="mb-3">
+                              <label class="form-label" for="quantiteMedicament">Quantité de médicament :</label>
+                              <input class="form-control" type="number" name="quantiteMedicament" id="quantiteMedicament" required>
                             </div>
                             <div class="text-center">
                               <button type="submit" class="btn btn-success">Ajouter</button>

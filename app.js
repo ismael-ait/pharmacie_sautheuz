@@ -11,6 +11,8 @@ const medicamentRoutes = require('./routes/medicamentRoutes'); // Import du rout
 const ordonnanceRoutes = require('./routes/ordonnanceRoutes'); // Import du routeur des médicaments
 const pathologieRoutes = require('./routes/pathologieRoutes');
 const mutuelleRoutes = require('./routes/mutuelleRoutes');
+const posologieRoutes= require('./routes/posologieRoutes');
+
 
 app.set('view engine', 'ejs');
 
@@ -26,6 +28,8 @@ app.use('/medicaments', medicamentRoutes); // Utilisation du routeur des médica
 app.use('/ordonnances', ordonnanceRoutes); // Utilisation du routeur des médicaments
 app.use('/pathologies', pathologieRoutes);
 app.use('/mutuelles', mutuelleRoutes);
+app.use('/posologies', posologieRoutes);
+
 
 app.use('/', accueilRoutes); // Route accueil
 
