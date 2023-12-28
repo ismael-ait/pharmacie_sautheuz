@@ -25,6 +25,20 @@ const Medicament = {
 
   deleteMedicament: (medicamentId, callback) => {
     db.query('DELETE FROM Medicament WHERE Medicament_Id = ?', [medicamentId], callback);
+  },
+
+  getMedicamentStockById: (medId, callback) => {
+    db.query('SELECT Medicament_Stock FROM Medicament WHERE Medicament_Id = ?', medId, (error, results) => {
+      if (error) {
+        callback(error, null);
+      } else {
+        if (results.length === 0) {
+          callback("Médicament non trouvé", null);
+        } else {
+          callback(null, results[0].Medicament_Stock);
+        }
+      }
+    });
   }
 };
 

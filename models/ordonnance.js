@@ -32,7 +32,15 @@ const Ordonnance = {
   },
 
   deleteOrdonnance: (ordonnanceId, callback) => {
-    db.query('DELETE FROM Ordonnance WHERE Ordonnance_Id = ?', [ordonnanceId], callback);
+    // Supprimer les posologies associées à l'ordonnance
+    db.query('DELETE FROM Posologie WHERE Posologie_IdOrdonnance = ?', [ordonnanceId], (error, result) => {
+      if (error) {
+        callback(error, null);
+      } else {
+        // Après avoir supprimé les posologies, supprimer l'ordonnance
+        db.query('DELETE FROM Ordonnance WHERE Ordonnance_Id = ?', [ordonnanceId], callback);
+      }
+    });
   }
 };
 
