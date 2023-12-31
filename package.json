@@ -4,7 +4,7 @@
   "description": "Site intranet pour pharmaciens afin de gérer les stocks de médicaments, et les divers éléments liés à leurs clients (ordonnances, pathologies, mutuelle etc.)",
   "main": "index.js",
   "scripts": {
-    "start": "npm start",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,12 +21,10 @@
     "@fortawesome/fontawesome-free": "^6.5.0",
     "body-parser": "^1.20.2",
     "bootstrap": "^5.3.2",
+    "dotenv": "^16.3.1",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
-    "express-validator": "^7.0.1",
-    "ini": "^4.1.1",
-    "mysql2": "^3.6.5",
-    "validator": "^13.11.0"
+    "mysql2": "^3.6.5"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
