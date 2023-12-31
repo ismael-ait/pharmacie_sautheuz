@@ -95,22 +95,24 @@
                 </div>
                 <hr>            
 
-                <div class="row">
-                    <div class="col">
-                        <form id="medicamentForm"> <!-- Formulaire pour sélectionner un médicament -->
-                            <label for="medicament">Sélectionnez un médicament :</label>
-                            <select id="medicament" name="medId">
+                <div class="row align-items-center mb-4">
+                    <div class="col-md-6">
+                        <form id="medicamentForm" class="d-flex flex-column align-items-center">
+                            <label for="medicament" class="mb-2">Sélectionnez un médicament :</label>
+                            <select id="medicament" name="medId" class="form-select mb-3">
                                 <% medicaments.forEach(medicament => { %>
                                     <option value="<%= medicament.Medicament_Id %>"><%= medicament.Medicament_Nom %></option>
                                 <% }); %>
                             </select>
-                            <button type="button" id="submitBtn">Afficher le diagramme des stocks</button> <!-- Utilisation d'un bouton de type "button" -->
+                            <button class="btn btn-success" type="button" id="submitBtn">Afficher le diagramme des stocks</button>
                         </form>
                     </div>
                 </div>
-                
+                <div class="col-md-6">
+
                 <canvas id="barChart"></canvas> <!-- Canvas pour le diagramme -->
-                
+            </div>
+
                 <script>
                    document.addEventListener('DOMContentLoaded', function() {
     let barChart = null; // Variable pour stocker le graphique actuel

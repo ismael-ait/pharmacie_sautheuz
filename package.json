@@ -4,7 +4,7 @@
   "description": "Site intranet pour pharmaciens afin de gérer les stocks de médicaments, et les divers éléments liés à leurs clients (ordonnances, pathologies, mutuelle etc.)",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

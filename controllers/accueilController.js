@@ -11,15 +11,6 @@ const accueilController = {
             }
         });
     },
-    getPosologies: (req, res) => {
-        Posologie.getAllPosologies((error, posologies) => {
-            if (error) {
-                res.status(500).send('Erreur lors de la récupération des posologies');
-            } else {
-                res.render('accueil', { posologies }); // Rendre la page accueil avec les données de posologies
-            }
-        });
-    },
 
     getDiagram: (req, res) => {
         const medId = req.query.medId;
