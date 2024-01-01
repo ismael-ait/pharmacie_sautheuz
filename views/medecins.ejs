@@ -58,7 +58,7 @@
 
               <div class="row justify-content-center">
                 <div class="col-md-6">
-                  <div class="bg-light rounded" style="border: 2px solid #343a40; padding: 20px;">
+                  <div class="bg-light rounded formulaire-ajout" style="border: 2px solid #343a40; padding: 20px;">
                     <h3 class="text-success text-center mb-4">Ajouter un médecin</h3>
                     <form action="/medecins/ajouter" method="POST">
                       <div class="mb-3">
@@ -108,6 +108,28 @@
         </div>
       </div>
     </div>
-    
+    <script>
+      introJs().setOptions({
+  steps: [
+    {
+    intro: "C'est dans cette page que vous pourrez : visualiser, ajouter, modifier, et supprimer des médecins"
+  }, {
+    element: document.querySelector('.table'),
+    intro: "Ce tableau liste les médecins inscrits dans la base de données"
+  }, {
+    element: document.querySelector('.btn-group'),
+    intro: "Ces boutons permettent d'effectuer la modification, ou la suppression des données concernant un médecin"
+  }, {
+    element: document.querySelector('.formulaire-ajout'),
+    intro: "Ce formulaire permet d'ajouter un médecin à la base de données"
+  }
+],
+            dontShowAgain: true, // Option pour ne pas afficher à nouveau l'introduction
+            doneLabel: "Terminer", 
+            showStepNumbers: false, 
+            nextLabel: "Suivant", 
+            prevLabel: "Précédent",
+}).start();
+    </script>
   </div>
   <%- include('footer') %> 

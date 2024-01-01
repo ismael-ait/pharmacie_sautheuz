@@ -11,14 +11,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style_main.css">
+    <link rel="stylesheet" href="https://unpkg.com/intro.js/introjs.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/intro.js/intro.js"></script>
 </head>
 <body>
     
     <div class="container-fluid p-0 d-flex h-100">
-        <div id="bdSidebar" class="d-flex flex-column flex-shrink-0 p-3 bg-success text-white offcanvas-md offcanvas-start" style="width: 280px;">
+        <div id="bdSidebar" class="d-flex flex-column flex-shrink-0 p-3 bg-success text-white offcanvas-md offcanvas-start sidebar" style="width: 280px;">
             <a href="#" class="navbar-brand">
                 <h5><i class="fa-solid fa-pills me-2" style="font-size: 28px;"></i>Pharmacie Sautheuz</h5>
             </a>
@@ -31,7 +32,7 @@
                     </a>
                 </li>
                 <li class="nav-item mb-1">
-                    <a href="/medecins" class="">
+                    <a href="/medecins" class="medecins">
                         <i class="fa-solid fa-user-md"></i>
                         Médecins
                         <span class="notification-badge"></span>
@@ -96,7 +97,7 @@
                 <hr>            
 
                 <div class="row align-items-center mb-4">
-                    <div class="col-md-6">
+                    <div class="col-md-6 chiffres">
                         <form id="medicamentForm" class="d-flex flex-column align-items-center">
                             <label for="medicament" class="mb-2">Sélectionnez un médicament :</label>
                             <select id="medicament" name="medId" class="form-select mb-3">
@@ -174,5 +175,32 @@
 
         
     </div>
+    <script>
+        introJs().setOptions({
+            showProgress: true,
+            steps: [
+                {
+                    intro: "Bienvenue sur la pharmacie sautheuz !"
+                },
+                {
+                    element: document.querySelector('.chiffres'),
+                    intro: "Ici, vous pouvez analyser les stocks de médicaments"
+                },
+                {
+                    element: document.querySelector('.sidebar'),
+                    intro: "Ce menu latéral vous redirigera ensuite vers les différentes sections du site, afin d'effectuer vos diverses opérations"
+                },
+                {
+                    element: document.querySelector('.medecins'),
+                    intro: "Par exemple, cliquez sur médecins, pour gérer les médecins"
+                }
+            ],
+            dontShowAgain: true, // Option pour ne pas afficher à nouveau l'introduction
+            doneLabel: "Terminer", // Étiquette pour le bouton de fin
+            showStepNumbers: false, // Pour masquer les numéros d'étape
+            nextLabel: "Suivant", // Libellé du bouton suivant en français
+            prevLabel: "Précédent", // Libellé du bouton précédent en français
+        }).start();
+    </script>
 </body>
 </html>
