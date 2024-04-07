@@ -55,7 +55,7 @@ const medecinController = {
         if (error) {
           res.status(500).send('Erreur lors de l\'ajout du médecin');
         } else {
-          res.redirect('/medecins'); // Redirige après l'ajout
+          res.redirect('/pharmacie/medecins'); // Redirige après l'ajout
         }
       });
     }
@@ -114,7 +114,7 @@ const medecinController = {
         if (error) {
           res.status(500).send('Erreur lors de la mise à jour du médecin');
         } else {
-          res.redirect('/medecins'); // Redirige après la mise à jour
+          res.redirect('/pharmacie/medecins'); // Redirige après la mise à jour
         }
       });
     }
@@ -127,7 +127,7 @@ const medecinController = {
       if (error) {
         res.status(500).send('Erreur lors de la suppression du médecin');
       } else {
-        res.redirect('/medecins'); // Redirige après la suppression
+        res.redirect('/pharmacie/medecins'); // Redirige après la suppression
       }
     });
   }

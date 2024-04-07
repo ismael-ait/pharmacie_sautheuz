@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 require('dotenv').config()
 const app = express();
 const port = process.env.PORT || 5000;
+const pool = require('./db/db');
+
 // Import des routes
 const patientRoutes = require('./routes/patientRoutes');
 const accueilRoutes = require('./routes/accueilRoutes'); 
@@ -22,17 +24,28 @@ app.use(bodyParser.json());
 app.use('/css', express.static(__dirname + '/public/css'));
 app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist'));
 
-app.use('/patients', patientRoutes); // Route patients
-app.use('/medecins', medecinRoutes); // Route medecins
-app.use('/pharmaciens', pharmacienRoutes); // Route medecins
-app.use('/medicaments', medicamentRoutes); // Utilisation du routeur des médicaments
-app.use('/ordonnances', ordonnanceRoutes); // Utilisation du routeur des médicaments
-app.use('/pathologies', pathologieRoutes);
-app.use('/mutuelles', mutuelleRoutes);
-app.use('/posologies', posologieRoutes);
+app.use('/pharmacie/patients', patientRoutes); // Route patients
+app.use('/pharmacie/medecins', medecinRoutes); // Route medecins
+app.use('/pharmacie/pharmaciens', pharmacienRoutes); // Route medecins
+app.use('/pharmacie/medicaments', medicamentRoutes); // Utilisation du routeur des médicaments
+app.use('/pharmacie/ordonnances', ordonnanceRoutes); // Utilisation du routeur des médicaments
+app.use('/pharmacie/pathologies', pathologieRoutes);
+app.use('/pharmacie/mutuelles', mutuelleRoutes);
+app.use('/pharmacie/posologies', posologieRoutes);
 
 
-app.use('/', accueilRoutes); // Route accueil
+app.use('/pharmacie', accueilRoutes); // Route accueil
+app.use('/portfolio', express.static('/var/www/portfolio'));
+
+// Vérification de la connexion à la base de données au démarrage de l'application
+pool.getConnection((err, connection) => {
+    if (err) {
+        console.error('Erreur lors de la connexion à la base de données :', err);
+    } else {
+        console.log('Connexion à la base de données réussie !');
+        connection.release(); // Libération de la connexion
+    }
+});
 
 
 // Écoute sur le port 5000

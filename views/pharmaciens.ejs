@@ -41,11 +41,11 @@
                           <td><%= pharmacien.Pharmacien_NomUtilisateur %></td>
                           <td>
                             <div class="btn-group">
-              <form method="get" action="/pharmaciens/modifier/<%= pharmacien.Pharmacien_Id %>">
+              <form method="get" action="/pharmacie/pharmaciens/modifier/<%= pharmacien.Pharmacien_Id %>">
 
                                 <button class="btn btn-link btn-sm" type="submit"><i class="fas fa-pen-to-square"></i></button>
                               </form>
-              <form method="post" action="/pharmaciens/supprimer/<%= pharmacien.Pharmacien_Id %>">
+              <form method="post" action="/pharmacie/pharmaciens/supprimer/<%= pharmacien.Pharmacien_Id %>">
 
                                 <button id ="boutonsModifer" class="btn btn-link btn-sm" type="submit"><i class="fas fa-times"></i></button>
                               </form>
@@ -64,7 +64,7 @@
                         <div class="col-md-6">
                             <div class="bg-light rounded" style="border: 2px solid #343a40; padding: 20px;">
                                 <h3 class="text-success text-center mb-4">Ajouter un pharmacien</h3>
-                                <form action="/pharmaciens/ajouter" method="POST">
+                                <form action="/pharmacie/pharmaciens/ajouter" method="POST">
                                   <div class="mb-3">
                                       <label class="form-label" for="nom">Nom :</label>
                                       <input class="form-control" type="text" name="nom" id="nom" required>

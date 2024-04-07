@@ -49,7 +49,7 @@ const pharmacienController = {
         if (error) {
           res.status(500).send('Erreur lors de l\'ajout du pharmacien');
         } else {
-          res.redirect('/pharmaciens'); // Redirige après l'ajout
+          res.redirect('/pharmacie/pharmaciens'); // Redirige après l'ajout
         }
       });
     }
@@ -102,7 +102,7 @@ const pharmacienController = {
         if (error) {
           res.status(500).send('Erreur lors de la mise à jour du pharmacien');
         } else {
-          res.redirect('/pharmaciens'); // Redirige après la mise à jour
+          res.redirect('/pharmacie/pharmaciens'); // Redirige après la mise à jour
         }
       });
     }
@@ -116,7 +116,7 @@ const pharmacienController = {
       if (error) {
         res.status(500).send('Erreur lors de la suppression du pharmacien');
       } else {
-        res.redirect('/pharmaciens'); // Redirige après la suppression
+        res.redirect('/pharmacie/pharmaciens'); // Redirige après la suppression
       }
     });
   }

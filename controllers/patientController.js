@@ -82,7 +82,7 @@ const patientController = {
         if (error) {
           res.status(500).send('Erreur lors de l\'ajout du patient');
         } else {
-          res.redirect('/patients'); // Redirige après l'ajout
+          res.redirect('/pharmacie/patients'); // Redirige après l'ajout
         }
       });
     }
@@ -164,7 +164,7 @@ const patientController = {
         if (error) {
           res.status(500).send('Erreur lors de la mise à jour du patient');
         } else {
-          res.redirect('/patients'); // Redirige après la mise à jour
+          res.redirect('/pharmacie/patients'); // Redirige après la mise à jour
         }
       });
     }
@@ -177,7 +177,7 @@ const patientController = {
       if (error) {
         res.status(500).send('Erreur lors de la suppression du patient');
       } else {
-        res.redirect('/patients'); // Redirige après la suppression
+        res.redirect('/pharmacie/patients'); // Redirige après la suppression
       }
     });
   }

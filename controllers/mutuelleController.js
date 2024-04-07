@@ -37,7 +37,7 @@ const mutuelleController = {
           if (err) {
             res.status(500).send('Erreur lors de l\'ajout de la mutuelle');
           } else {
-            res.redirect('/mutuelles');
+            res.redirect('/pharmacie/mutuelles');
           }
         });
       }
@@ -84,7 +84,7 @@ const mutuelleController = {
             if (err) {
               res.status(500).json({ error: err.message });
             } else {
-              res.redirect('/mutuelles');
+              res.redirect('/pharmacie/mutuelles');
             }
           });
         }
@@ -98,7 +98,7 @@ const mutuelleController = {
       if (err) {
         res.status(500).json({ error: err.message });
       } else {
-        res.redirect('/mutuelles');
+        res.redirect('/pharmacie/mutuelles');
       }
     });
   }

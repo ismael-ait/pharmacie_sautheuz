@@ -49,7 +49,7 @@ const medicamentController = {
         if (error) {
           res.status(500).send('Erreur lors de l\'ajout du médicament');
         } else {
-          res.redirect('/medicaments'); // Rediriger après l'ajout
+          res.redirect('/pharmacie/medicaments'); // Rediriger après l'ajout
         }
       });
     }
@@ -103,7 +103,7 @@ const medicamentController = {
         if (error) {
           res.status(500).send('Erreur lors de la mise à jour du médicament');
         } else {
-          res.redirect('/medicaments'); // Redirige après la mise à jour
+          res.redirect('/pharmacie/medicaments'); // Redirige après la mise à jour
         }
       });
     }
@@ -116,7 +116,7 @@ const medicamentController = {
       if (error) {
         res.status(500).send('Erreur lors de la suppression du médicament');
       } else {
-        res.redirect('/medicaments'); // Redirige après la suppression
+        res.redirect('/pharmacie/medicaments'); // Redirige après la suppression
       }
     });
   }

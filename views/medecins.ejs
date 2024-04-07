@@ -40,10 +40,10 @@
                       <td><%= medecin.Medecin_NumeroTelephone %></td>
                       <td>
                         <div class="btn-group">
-                          <form method="get" action="/medecins/modifier/<%= medecin.Medecin_Id %>">
+                          <form method="get" action="/pharmacie/medecins/modifier/<%= medecin.Medecin_Id %>">
                             <button class="btn btn-link btn-sm" type="submit"><i class="fas fa-pen-to-square"></i></button>
                           </form>
-                          <form method="post" action="/medecins/supprimer/<%= medecin.Medecin_Id %>">
+                          <form method="post" action="/pharmacie/medecins/supprimer/<%= medecin.Medecin_Id %>">
                             <button id ="boutonsModifer" class="btn btn-link btn-sm" type="submit"><i class="fas fa-times"></i></button>
                           </form>
                         </div>
@@ -60,7 +60,7 @@
                 <div class="col-md-6">
                   <div class="bg-light rounded formulaire-ajout" style="border: 2px solid #343a40; padding: 20px;">
                     <h3 class="text-success text-center mb-4">Ajouter un médecin</h3>
-                    <form action="/medecins/ajouter" method="POST">
+                    <form action="/phamacie/medecins/ajouter" method="POST">
                       <div class="mb-3">
                         <label class="form-label" for="nom">Nom du médecin :</label>
                         <input class="form-control" type="text" name="nom" id="nom" required>

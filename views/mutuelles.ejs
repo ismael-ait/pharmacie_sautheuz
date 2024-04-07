@@ -38,10 +38,10 @@
                   <td><%= mutuelle.Mutuelle_Taux %></td>
                   <td>
                     <div class="btn-group">
-                      <form method="get" action="/mutuelles/modifier/<%= mutuelle.Mutuelle_Id %>">
+                      <form method="get" action="/pharmacie/mutuelles/modifier/<%= mutuelle.Mutuelle_Id %>">
                         <button class="btn btn-link btn-sm" type="submit"><i class="fas fa-pen-to-square"></i></button>
                       </form>
-                      <form method="post" action="/mutuelles/supprimer/<%= mutuelle.Mutuelle_Id %>">
+                      <form method="post" action="/pharmacie/mutuelles/supprimer/<%= mutuelle.Mutuelle_Id %>">
                         <button id="boutonsModifer" class="btn btn-link btn-sm" type="submit"><i class="fas fa-times"></i></button>
                       </form>
                     </div>
@@ -59,7 +59,7 @@
               <div class="col-md-6">
                 <div class="bg-light rounded" style="border: 2px solid #343a40; padding: 20px;">
                   <h3 class="text-success text-center mb-4">Ajouter une mutuelle</h3>
-                  <form action="/mutuelles/ajouter" method="POST">
+                  <form action="/pharmacie/mutuelles/ajouter" method="POST">
                     <div class="mb-3">
                       <label class="form-label" for="nom">Nom :</label>
                       <input class="form-control <%= typeof errors !== 'undefined' && errors.length > 0 && errors.includes('Le nom de la mutuelle saisi est invalide.') ? 'is-invalid' : '' %>" type="text" name="nom" id="nom" required>

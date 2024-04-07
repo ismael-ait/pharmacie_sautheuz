@@ -42,10 +42,10 @@
                       <td><%= ordonnance.FormattedDate %></td>
                       <td>
                         <div class="btn-group">
-                          <form method="get" action="/ordonnances/modifier/<%= ordonnance.Ordonnance_Id %>">
+                          <form method="get" action="/pharmacie/ordonnances/modifier/<%= ordonnance.Ordonnance_Id %>">
                             <button class="btn btn-link btn-sm" type="submit"><i class="fas fa-pen-to-square"></i></button>
                           </form>
-                          <form method="post" action="/ordonnances/supprimer/<%= ordonnance.Ordonnance_Id %>">
+                          <form method="post" action="/pharmacie/ordonnances/supprimer/<%= ordonnance.Ordonnance_Id %>">
                             <button id ="boutonsModifer" class="btn btn-link btn-sm" type="submit"><i class="fas fa-times"></i></button>
                           </form>
                         </div>
@@ -63,7 +63,7 @@
                     <div class="col-md-6">
                         <div class="bg-light rounded" style="border: 2px solid #343a40; padding: 20px;">
                           <h3 class="text-success text-center mb-4">Ajouter une ordonnance</h3>
-                          <form action="/ordonnances/ajouter" method="POST">
+                          <form action="/pharmacie/ordonnances/ajouter" method="POST">
                             <div class="mb-3">
                               <label class="form-label" for="Medecin">Médecin :</label>
                               <select class="form-select" name="idMedecin" id="idMedecin" required>

@@ -50,7 +50,7 @@ const pathologieController = {
         if (error) {
           res.status(500).send('Erreur lors de l\'ajout de la pathologie');
         } else {
-          res.redirect('/pathologies'); // Redirection après l'ajout
+          res.redirect('/pharmacie/pathologies'); // Redirection après l'ajout
         }
       });
     }
@@ -83,7 +83,7 @@ const pathologieController = {
         if (error) {
           res.status(500).send('Erreur lors de la mise à jour de la pathologie');
         } else {
-          res.redirect('/pathologies'); // Redirection après la mise à jour
+          res.redirect('/pharmacie/pathologies'); // Redirection après la mise à jour
         }
       });
     }
@@ -96,7 +96,7 @@ const pathologieController = {
       if (error) {
         res.status(500).send('Erreur lors de la suppression de la pathologie');
       } else {
-        res.redirect('/pathologies'); // Redirection après la suppression
+        res.redirect('/pharmacie/pathologies'); // Redirection après la suppression
       }
     });
   }

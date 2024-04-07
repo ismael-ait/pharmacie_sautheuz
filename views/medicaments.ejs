@@ -39,10 +39,10 @@
                           <td><%= medicament.Medicament_Prix %></td>
                           <td>
                             <div class="btn-group">
-                              <form method="get" action="/medicaments/modifier/<%= medicament.Medicament_Id %>">
+                              <form method="get" action="/pharmacie/medicaments/modifier/<%= medicament.Medicament_Id %>">
                                 <button class="btn btn-link btn-sm" type="submit"><i class="fas fa-pen-to-square"></i></button>
                               </form>
-                              <form method="post" action="/medicaments/supprimer/<%= medicament.Medicament_Id %>">
+                              <form method="post" action="/pharmacie/medicaments/supprimer/<%= medicament.Medicament_Id %>">
                                 <button id ="boutonsModifer" class="btn btn-link btn-sm" type="submit"><i class="fas fa-times"></i></button>
                               </form>
                             </div>
@@ -60,7 +60,7 @@
                         <div class="col-md-6">
                             <div class="bg-light rounded" style="border: 2px solid #343a40; padding: 20px;">
                                 <h3 class="text-success text-center mb-4">Ajouter un médicament</h3>
-                                <form action="/medicaments/ajouter" method="POST">
+                                <form action="/pharmacie/medicaments/ajouter" method="POST">
                                     <div class="mb-3">
                                         <label class="form-label" for="nom">Nom du médicament :</label>
                                         <input class="form-control" type="text" name="nom" id="nom" required>

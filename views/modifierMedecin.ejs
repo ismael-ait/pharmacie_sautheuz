@@ -5,7 +5,7 @@
       <div class="col-md-6">
         <div class="bg-light rounded" style="border: 2px solid #343a40; padding: 20px;">
           <h3 class="text-success text-center mb-4">Modifier un médecin</h3>
-          <form action="/medecins/modifier/<%= medecin.Medecin_Id %>" method="POST">
+          <form action="/pharmacie/medecins/modifier/<%= medecin.Medecin_Id %>" method="POST">
             <div class="mb-3">
               <label class="form-label" for="nom">Nom :</label>
               <input class="form-control <%= typeof errors !== 'undefined' && errors.includes('Le nom saisi est invalide.') ? 'is-invalid' : '' %>" type="text" name="nom" id="nom" required value="<%= medecin.Medecin_Nom %>">
@@ -35,7 +35,7 @@
             </div>
             <div class="text-center">
               <button type="submit" class="btn btn-success">Enregistrer les modifications</button>
-              <a href="/medecins" class="btn btn-secondary">Annuler</a>
+              <a href="/pharmacie/medecins" class="btn btn-secondary">Annuler</a>
             </div>
           </form>
         </div>

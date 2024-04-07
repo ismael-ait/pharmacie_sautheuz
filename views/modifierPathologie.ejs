@@ -14,14 +14,14 @@
               <% }); %>
             </div>
           <% } %>
-          <form action="/pathologies/modifier/<%= pathologie.Maladie_Id %>" method="POST">
+          <form action="/pharmacie/pathologies/modifier/<%= pathologie.Maladie_Id %>" method="POST">
             <div class="mb-3">
               <label class="form-label" for="nom">Nom de la pathologie :</label>
               <input class="form-control" type="text" name="nom" id="nom" required value="<%= pathologie.Maladie_Nom %>">
             </div>
             <div class="text-center">
               <button type="submit" class="btn btn-success">Enregistrer les modifications</button>
-              <a href="/pathologies" class="btn btn-secondary">Annuler</a>
+              <a href="/pharmacie/pathologies" class="btn btn-secondary">Annuler</a>
             </div>
           </form>
         </div>

@@ -13,7 +13,7 @@
               <% }); %>
             </div>
           <% } %>
-          <form action="/mutuelles/modifier/<%= mutuelle.Mutuelle_Id %>" method="POST">
+          <form action="/pharmacie/mutuelles/modifier/<%= mutuelle.Mutuelle_Id %>" method="POST">
             <div class="mb-3">
               <label class="form-label" for="nom">Nom de la mutuelle :</label>
               <input class="form-control <%= typeof errors !== 'undefined' && errors.includes('Le nom de la mutuelle saisi est invalide.') ? 'is-invalid' : '' %>" type="text" name="nom" id="nom" required value="<%= mutuelle.Mutuelle_Nom %>">

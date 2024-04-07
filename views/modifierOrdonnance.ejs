@@ -6,7 +6,7 @@
       <div class="col-md-6">
         <div class="bg-light rounded" style="border: 2px solid #343a40; padding: 20px;">
           <h3 class="text-success text-center mb-4">Modifier une ordonnance</h3>
-          <form action="/ordonnances/modifier/<%= ordonnance.Ordonnance_Id %>" method="POST">
+          <form action="/pharmacie/ordonnances/modifier/<%= ordonnance.Ordonnance_Id %>" method="POST">
             <div class="mb-3">
               <label class="form-label" for="idMedecin">Médecin :</label>
               <select class="form-select" name="idMedecin" id="idMedecin" required>
@@ -40,7 +40,7 @@
             </div>
             <div class="text-center">
               <button type="submit" class="btn btn-success">Enregistrer les modifications</button>
-              <a href="/ordonnances" class="btn btn-secondary">Annuler</a>
+              <a href="/phrmacie/ordonnances" class="btn btn-secondary">Annuler</a>
             </div>
           </form>
         </div>

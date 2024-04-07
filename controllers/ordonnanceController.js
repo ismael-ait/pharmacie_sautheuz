@@ -83,7 +83,7 @@ const ordonnanceController = {
           if (errorPosologie) {
             res.status(500).send('Erreur lors de l\'ajout de la posologie');
           } else {
-            res.redirect('/ordonnances'); // Redirige après l'ajout de l'ordonnance et de la posologie
+            res.redirect('/pharmacie/ordonnances'); // Redirige après l'ajout de l'ordonnance et de la posologie
           }
         });
       }
@@ -121,7 +121,7 @@ const ordonnanceController = {
       if (error) {
         res.status(500).send('Erreur lors de la mise à jour de l\'ordonnance');
       } else {
-        res.redirect('/ordonnances'); // Redirige après la mise à jour
+        res.redirect('/pharmacie/ordonnances'); // Redirige après la mise à jour
       }
     });
   },
@@ -133,7 +133,7 @@ const ordonnanceController = {
       if (error) {
         res.status(500).send('Erreur lors de la suppression de l\'ordonnance');
       } else {
-        res.redirect('/ordonnances'); // Redirige après la suppression
+        res.redirect('/pharmacie/ordonnances'); // Redirige après la suppression
       }
     });
   }
